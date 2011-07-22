@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="uwmarketing.googlemaps">
+<body>
+    <div metal:fill-slot="main">
+        <tal:main-macro metal:define-macro="main"
+                        tal:define="testview view/test">
+
+            <h1 class="documentFirstHeading">
+                <metal:field use-macro="python:here.widget('title', mode='view')" />
+            </h1>
+
+            
+            <div id="gmap" class="googleMapView regionsMapView">
+            <div id="CustomGoogleMap">
+                <div class="mapTL"></div> <div class="mapTR"></div> <div class="mapBL"></div> <div class="mapBR"></div>
+                <div id="regionFastFacts">
+                <span class="regioninfoWindowInternal" tal:condition="exists: context/getText" tal:omit-tag="python: len(context.getText()) < 1" tal:content="structure context/getPopup | nothing">Region Popup Info Here</span>
+                    <h3> Choose A District: </h3>
+                    <form id="choose-a-district" action="#">
+                        <select title="Choose a District">
+                            <option id="select-option">Select a district</option>
+                            <option tal:attributes="value python: context.getParentNode().absolute_url()">Main Map</option>
+                        <tal:districts repeat="district python: context.getParentNode().objectValues()"> 
+                        <option tal:omit-tag="python:district.meta_type != 'Region'" tal:attributes="value district/absolute_url"><tal:block tal:condition="python: district.meta_type == 'Region'" replace="district/title"/></option>
+                        </tal:districts>
+                        </select>
+                    </form>
+                </div>
+                <span id="kmlUrl" tal:content="python: context.getRegionKml().absolute_url()" style="display:none"/>
+                <div id="googleMapPane"></div>
+            </div>
+            </div> 
+
+            <p class="documentDescription" tal:condition="here/Description">
+                <metal:field use-macro="python:here.widget('description', mode='view')" />
+            </p>
+
+            <span class="regioninfoWindowExternal" tal:condition="exists: context/getText" tal:omit-tag="python: len(context.getText()) < 1" tal:content="structure context/getText | nothing">Region Info Here</span>
+
+            
+        </tal:main-macro>
+    </div>
+</body>
+</html>

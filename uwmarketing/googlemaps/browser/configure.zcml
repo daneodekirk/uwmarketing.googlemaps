@@ -1,0 +1,45 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="uwmarketing.googlemaps">
+
+  <include package="plone.app.contentmenu" />
+
+  <!-- -*- extra stuff goes here -*- -->
+  <browser:page
+      name="googlemaps-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class="uwmarketing.googlemaps.configlet.GoogleMapsControlPanel"      
+      permission="cmf.ManagePortal" />
+
+  <browser:page
+      for="*"
+      name="googlemap_view"
+      class=".googlemapview.GoogleMapView"
+      template="googlemapview.pt"
+      allowed_interface=".googlemapview.IGoogleMapView"
+      permission="zope.Public"
+      />
+
+
+  <browser:page
+      for="*"
+      name="region_view"
+      class=".regionview.RegionView"
+      template="regionview.pt"
+      allowed_interface=".regionview.IRegionView"
+      permission="zope.Public"
+      />
+
+
+  <browser:page
+      for="*"
+      name="location_view"
+      class=".locationview.LocationView"
+      template="locationview.pt"
+      allowed_interface=".locationview.ILocationView"
+      permission="zope.Public"
+      />
+
+
+</configure>

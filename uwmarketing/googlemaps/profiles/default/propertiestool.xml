@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="imaging_properties" meta_type="Plone Property Sheet">
+  <property name="title">Image handling properties</property>
+  <property name="allowed_sizes" type="lines">
+   <element value="large 768:768"/>
+   <element value="preview 370:240"/>
+   <element value="full_width 450:300"/>
+   <element value="horizontal 300:200"/>
+   <element value="vertical 200:300"/>
+   <element value="sidebar 150:100"/>
+   <element value="mini 210:92"/>
+   <element value="thumb 160:70"/>
+   <!--<element value="tile 64:64"/> this could get confused with tile types-->
+   <element value="icon 32:32"/>
+   <element value="listing 16:16"/>
+  </property>
+ </object>
+</object>

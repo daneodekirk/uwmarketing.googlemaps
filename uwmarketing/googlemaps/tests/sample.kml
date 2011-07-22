@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document id="tl_2009_53_sldu_SimplifyPoly layer">
+  <name>tl_2009_53_sldu_SimplifyPoly layer</name>
+  <Style id="PolyStyle00">
+    <LabelStyle>
+      <color>00000000</color>
+      <scale>0.000000</scale>
+    </LabelStyle>
+    <LineStyle>
+      <color>7fffffff</color>
+      <width>2</width>
+    </LineStyle>
+    <PolyStyle>
+      <color>88993366</color>
+      <outline>1</outline>
+    </PolyStyle>
+  </Style>
+  <Snippet></Snippet>
+  <Folder id="FeatureLayer0">
+    <name>tl_2009_53_sldu_SimplifyPoly layer</name>
+  <Snippet></Snippet>
+    <Placemark>
+      <name>State Senate District 1</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.028856,47.311592,0.000000 -122.061252,47.374502,0.000000 -122.138556,47.376882,0.000000 -122.143925,47.401395,0.000000 -122.101887,47.401488,0.000000 -122.096190,47.419240,0.000000 -122.163936,47.463941,0.000000 -122.022320,47.494502,0.000000 -122.058602,47.515925,0.000000 -122.057418,47.546938,0.000000 -122.098001,47.587777,0.000000 -122.079332,47.627022,0.000000 -122.091233,47.654114,0.000000 -122.068236,47.623703,0.000000 -121.928308,47.638522,0.000000 -121.872505,47.601786,0.000000 -121.831905,47.629719,0.000000 -121.763843,47.629465,0.000000 -121.763205,47.687801,0.000000 -121.585478,47.686614,0.000000 -121.598243,47.533460,0.000000 -121.535860,47.548978,0.000000 -121.405500,47.484771,0.000000 -121.287514,47.543231,0.000000 -121.241407,47.538734,0.000000 -121.427063,47.421295,0.000000 -121.437953,47.372342,0.000000 -121.466178,47.368016,0.000000 -121.444025,47.343767,0.000000 -121.848351,47.343265,0.000000 -121.855367,47.374107,0.000000 -121.951128,47.356300,0.000000 -121.988229,47.376283,0.000000 -122.016336,47.362880,0.000000 -121.996095,47.328863,0.000000 -122.028856,47.311592,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>State Senate District 2</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.281650,47.625514,0.000000 -122.363761,47.595432,0.000000 -122.389937,47.607830,0.000000 -122.337495,47.612621,0.000000 -122.358841,47.663589,0.000000 -122.337796,47.685648,0.000000 -122.255735,47.647120,0.000000 -122.281650,47.625514,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>State Senate District 3</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.284362,47.532073,0.000000 -122.344737,47.602320,0.000000 -122.263535,47.624320,0.000000 -122.249333,47.531821,0.000000 -122.191992,47.490970,0.000000 -122.254467,47.484677,0.000000 -122.284362,47.532073,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>State Senate District 4</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.098730,47.564706,0.000000 -122.057418,47.546938,0.000000 -122.058602,47.515925,0.000000 -122.026529,47.508523,0.000000 -122.027085,47.484712,0.000000 -122.158649,47.468861,0.000000 -122.172978,47.474596,0.000000 -122.156649,47.506782,0.000000 -122.216232,47.500321,0.000000 -122.249333,47.531821,0.000000 -122.265735,47.613620,0.000000 -122.220434,47.596821,0.000000 -122.222929,47.621060,0.000000 -122.153613,47.617147,0.000000 -122.142346,47.578868,0.000000 -122.098730,47.564706,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>State Senate District 5</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.321120,47.354414,0.000000 -122.373535,47.365521,0.000000 -122.348435,47.388521,0.000000 -122.404137,47.445320,0.000000 -122.289769,47.472475,0.000000 -122.269223,47.429547,0.000000 -122.215846,47.441004,0.000000 -122.186785,47.405471,0.000000 -122.196933,47.355950,0.000000 -122.321120,47.354414,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>State Senate District 6</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.347365,47.564493,0.000000 -122.319009,47.585657,0.000000 -122.253535,47.484316,0.000000 -122.203623,47.479655,0.000000 -122.191008,47.506355,0.000000 -122.156649,47.506782,0.000000 -122.172978,47.474596,0.000000 -122.139402,47.442387,0.000000 -122.269223,47.429547,0.000000 -122.289769,47.472475,0.000000 -122.341763,47.474332,0.000000 -122.327684,47.513867,0.000000 -122.347365,47.564493,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>State Senate District 7</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.374895,47.605997,0.000000 -122.344736,47.602320,0.000000 -122.347427,47.565226,0.000000 -122.327684,47.513868,0.000000 -122.338879,47.452379,0.000000 -122.404137,47.445322,0.000000 -122.351034,47.378122,0.000000 -122.466160,47.319513,0.000000 -122.525473,47.324804,0.000000 -122.538567,47.399336,0.000000 -122.513817,47.471006,0.000000 -122.445488,47.542894,0.000000 -122.446800,47.598135,0.000000 -122.374895,47.605997,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.374895,47.605997,0.000000 -122.389936,47.607832,0.000000 -122.346329,47.609121,0.000000 -122.374895,47.605997,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>State Senate District 8</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -120.491649,46.542174,0.000000 -120.873178,46.526722,0.000000 -121.120128,46.444887,0.000000 -121.126187,46.471028,0.000000 -121.209313,46.512557,0.000000 -121.299231,46.456472,0.000000 -121.380435,46.468122,0.000000 -121.455979,46.516732,0.000000 -121.416644,46.548244,0.000000 -121.424568,46.570288,0.000000 -121.386707,46.621208,0.000000 -121.413217,46.675871,0.000000 -121.376265,46.686791,0.000000 -121.361322,46.720689,0.000000 -121.430334,46.740165,0.000000 -121.455067,46.780607,0.000000 -121.443277,46.794535,0.000000 -121.523270,46.873280,0.000000 -121.456500,46.922733,0.000000 -121.457401,46.964033,0.000000 -121.373597,47.056427,0.000000 -121.382509,47.085229,0.000000 -121.359922,47.070691,0.000000 -121.282039,47.088954,0.000000 -121.089794,46.991039,0.000000 -121.026490,46.911341,0.000000 -120.915390,46.911262,0.000000 -120.912826,46.854201,0.000000 -120.884642,46.832831,0.000000 -120.795124,46.788894,0.000000 -120.709339,46.798973,0.000000 -120.719177,46.782736,0.000000 -120.636340,46.764093,0.000000 -120.679803,46.738438,0.000000 -120.678642,46.717703,0.000000 -120.641334,46.675954,0.000000 -120.569442,46.687463,0.000000 -120.516485,46.666813,0.000000 -120.525207,46.633537,0.000000 -120.460437,46.583869,0.000000 -120.468186,46.534782,0.000000 -120.491649,46.542174,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>State Senate District 9</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.642791,47.595595,0.000000 -122.682454,47.596116,0.000000 -122.690757,47.633516,0.000000 -122.724662,47.635630,0.000000 -122.718098,47.660206,0.000000 -122.764977,47.681139,0.000000 -122.765777,47.716062,0.000000 -122.714486,47.795640,0.000000 -122.597884,47.876190,0.000000 -122.637362,47.938209,0.000000 -122.606760,47.972953,0.000000 -122.494874,47.923349,0.000000 -122.432678,47.842037,0.000000 -122.442245,47.785618,0.000000 -122.420842,47.749819,0.000000 -122.459040,47.681784,0.000000 -122.454812,47.573890,0.000000 -122.533047,47.571707,0.000000 -122.556624,47.591161,0.000000 -122.610444,47.563709,0.000000 -122.613307,47.595606,0.000000 -122.642791,47.595595,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>State Senate District 10</name>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <Snippet></Snippet>
+      <MultiGeometry>
+        <Polygon>
+          <tessellate>1</tessellate>
+          <extrude>0</extrude>
+          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -122.267232,47.874598,0.000000 -122.271484,47.810155,0.000000 -122.316159,47.784868,0.000000 -122.341182,47.806958,0.000000 -122.440545,47.803118,0.000000 -122.330449,47.947717,0.000000 -122.282138,47.949301,0.000000 -122.293496,47.929821,0.000000 -122.258615,47.889198,0.000000 -122.219972,47.892952,0.000000 -122.246244,47.865471,0.000000 -122.267232,47.874598,0.000000</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+  </Folder>
+</Document>
+</kml>

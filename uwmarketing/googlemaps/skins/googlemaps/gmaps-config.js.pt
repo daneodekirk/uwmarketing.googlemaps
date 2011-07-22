@@ -1,0 +1,68 @@
+<tal:block define="_dummy python:request.response.setHeader('content-type','text/javascript;;charset=utf-8')" />
+<metal:block i18n:domain="uwmarketing.googlemaps">
+
+var current_url = '<tal:block tal:replace="context/absolute_url"/>';
+var mapsConfig = {
+    google: {
+        apikey: '',
+        ajaxsearchkey: '',
+        maxinfowidth: 400,
+        //locationnotfound: 'The location \'[LOCATION]\' couldn\'t be found.',
+        selectablemaptypes: true,
+        defaultmaptype: 'normal',
+        maxzoomlevel: 13,
+        initialzoomlevel: 12,
+        markericons: [{
+            'infoShadowAnchor': [18, 25],
+            'name': 'Red Marker',
+            'iconSize': [28, 37],
+            'iconAnchor': [13, 36],
+            'shadowSize': [29, 13],
+            'shadow': current_url+'/uwmarker-shadow.png',
+            'infoWindowAnchor': [14, 6],
+            'icon': current_url+'/uwmarker-red.png'
+        },
+        {
+            'infoShadowAnchor': [18, 25],
+            'name': 'Green Marker',
+            'iconSize': [28, 37],
+            'iconAnchor': [13, 36],
+            'shadowSize': [29, 13],
+            'shadow': current_url+'/uwmarker-shadow.png',
+            'infoWindowAnchor': [14, 6],
+            'icon': current_url+'/uwmarker-green.png'
+        },
+        {
+            'infoShadowAnchor': [18, 25],
+            'name': 'Blue Marker',
+            'iconSize': [28, 37],
+            'iconAnchor': [13, 36],
+            'shadowSize': [29, 13],
+            'shadow': current_url+'/uwmarker-shadow.png',
+            'infoWindowAnchor': [14, 6],
+            'icon': current_url+'/uwmarker-blue.png'
+        },
+        {
+            'infoShadowAnchor': [18, 25],
+            'name': 'Gold Marker',
+            'iconSize': [28, 37],
+            'iconAnchor': [13, 36],
+            'shadowSize': [29, 13],
+            'shadow': current_url+'/uwmarker-shadow.png',
+            'infoWindowAnchor': [14, 6],
+            'icon': current_url+'/uwmarker-gold.png'
+        },
+        {
+            'infoShadowAnchor': [18, 25],
+            'name': 'Purple Marker',
+            'iconSize': [28, 37],
+            'iconAnchor': [13, 36],
+            'shadowSize': [29, 13],
+            'shadow': current_url+'/uwmarker-shadow.png',
+            'infoWindowAnchor': [14, 6],
+            'icon': current_url+'/uwmarker-purple.png'
+        }]
+    }
+};
+
+</metal:block>

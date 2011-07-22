@@ -1,0 +1,44 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="uwmarketing.googlemaps">
+    
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
+
+  <!-- Include the sub-packages that use their own configure.zcml files. -->
+  <include package=".browser" />
+  <include package=".content" />
+  <include package=".portlets" />
+
+  <adapter
+      factory=".configlet.GoogleMapsControlPanelAdapter" />
+  
+  <!-- Register the installation GenericSetup extension profile -->
+  <genericsetup:registerProfile
+      name="default"
+      title="uwmarketing.googlemaps"
+      directory="profiles/default"
+      description="Add polygons and markers to a google map"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="uwmarketing.googlemaps"
+      directory="profiles/uninstall"
+      description="Removes UW Marketing Google Maps product"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+  <include package=".browser" />
+  
+
+</configure>

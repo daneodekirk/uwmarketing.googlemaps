@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="uwmarketing.googlemaps">
+<body>
+    <div metal:fill-slot="main">
+        <tal:main-macro metal:define-macro="main"
+                        tal:define="testview view/test">
+                        
+                        <metal:field tal:content="python: here.portal_type"/>
+
+            <h1 class="documentFirstHeading">
+                <metal:field use-macro="python:here.widget('title', mode='view')" />
+            </h1>
+
+            <p class="documentDescription" tal:condition="here/Description">
+                <metal:field use-macro="python:here.widget('description', mode='view')" />
+            </p>
+
+            <div class="infoWindowExternal" tal:attributes="id context/id">
+                <span class="popup" tal:content="structure context/getPopup"/>
+            </div> 
+
+            <div id="gmap" class="googleMapView">
+            <div id="CustomGoogleMap">
+                <div class="mapTL"></div> <div class="mapTR"></div> <div class="mapBL"></div> <div class="mapBR"></div>
+                <div class="infoWindow" tal:attributes="id context/id" style="display:none">
+                    <h2><a href="" tal:attributes="href context/absolute_url" tal:content="context/title">Title</a></h2>
+                    <span class="latitude" tal:content="context/getLatitude"/>
+                    <span class="longitude" tal:content="context/getLongitude"/>
+                    <span class="markerIcon" tal:content="context/getMarkerIcon"/>
+                    <span class="popup" tal:content="structure context/getPopup"/>
+                </div> 
+                <div id="googleMapPane"></div>
+            </div>
+            </div> 
+
+        </tal:main-macro>
+    </div>
+</body>
+</html>

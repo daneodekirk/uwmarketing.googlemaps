@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="uwmarketing.googlemaps">
+<body>
+
+    <metal:javascript fill-slot="javascript_head_slot">
+     <tal:script define="poly view/generatePolygons">
+         <script type="text/javascript" tal:content="poly"> </script>
+     </tal:script> 
+    </metal:javascript>
+
+    
+    <div metal:fill-slot="main">
+        <tal:main-macro metal:define-macro="main"
+                        tal:define="testview view/test">
+
+            <h1 class="documentFirstHeading">
+                <metal:field use-macro="python:here.widget('title', mode='view')" />
+            </h1>
+
+            <p class="documentDescription" tal:condition="here/Description">
+                <metal:field use-macro="python:here.widget('description', mode='view')" />
+            </p>
+
+            
+            <div class="searchBar"> 
+                <div class="portalRound">
+                    <div class="portalBlockBG">
+
+                        <div class="bgtop">
+                            <div class="roundtop">
+                                <div class="roundLeftTop"> </div> 
+                            </div> 
+                        </div>
+
+                        <div class="pad3"> 
+                            <div id="geolocateAddress">
+                                    <input type="text" value="Type an Address" name="geolocateAddress" id="geolocateSearch" style="text-transform:uppercase"/>
+                                    <input type="button" id="searchsubmit" value="Search"/> 
+                                    <p>or</p> 
+                                    <form id="choose-a-district" action="#">
+                                        <select title="Choose a District">
+                                            <option id="select-option">Select a district</option>
+                                        <tal:districts repeat="district context/objectValues"> 
+                                        <option tal:omit-tag="python:district.meta_type != 'Region'" tal:attributes="value district/absolute_url"><tal:block tal:condition="python: district.meta_type == 'Region'" replace="district/title"/></option>
+                                        </tal:districts>
+                                        </select>
+                                    </form>
+                            </div> 
+                        </div>
+
+                        <div class="bgbottom">
+                            <div class="roundbottom"> 
+                                <div class="roundLeftBottom"> </div> 
+                            </div>
+                        </div> 
+
+                    </div> 
+                </div> 
+            </div> 
+
+            <div id="gmap" class="googleLoading googleMapView">
+            <div id="CustomGoogleMap">
+                <div id="geolocateInfo"> </div>
+                <div class="mapTL"></div> <div class="mapTR"></div> <div class="mapBL"></div> <div class="mapBR"></div>
+            <!--span style="display:none" id="kmlUrl" tal:content="context/kmlFile/absolute_url | nothing">Main KML file with all Regions/Polygons</span-->
+            <tal:mapcontent repeat="mapcontent context/objectValues"> 
+
+
+            <tal:location tal:condition="python: mapcontent.meta_type == 'Location'"> 
+                <div class="infoWindow" style="display:none" tal:attributes="id mapcontent/id">
+                    <div class="closeButton"></div>
+                    <h2><a href="" tal:attributes="href mapcontent/absolute_url" tal:content="mapcontent/title">Title</a></h2>
+                    <span class="latitude" tal:content="mapcontent/getLatitude"/>
+                    <span class="longitude" tal:content="mapcontent/getLongitude"/>
+                    <span class="markerIcon" tal:content="mapcontent/getMarkerIcon"/>
+                    <span class="popup" tal:content="structure mapcontent/getPopup"/>
+                </div> 
+            </tal:location> 
+
+            <tal:region tal:condition="python: mapcontent.meta_type == 'Region'"> 
+                <span class="kmlUrl" style="display:none" tal:content="mapcontent/regionKml/absolute_url | nothing"/>
+                <div class="regionInfoWindow" style="display:none" tal:attributes="id mapcontent/id">
+                    <div class="closeButton"></div>
+                    <h2><a href="" tal:attributes="href mapcontent/absolute_url" tal:content="mapcontent/title">Title</a></h2>
+                    <span class="regionPopup" tal:condition="exists: mapcontent/getPopup" tal:omit-tag="python: len(mapcontent.getPopup()) < 1" tal:content="structure mapcontent/getPopup | nothing">Region Popup Info Here</span>
+                    <span class="wouldYouLikeToKnowMore"><a href="" tal:attributes="href mapcontent/absolute_url">Learn more about this district</a></span>
+                </div> 
+            </tal:region> 
+
+            </tal:mapcontent>
+                <div id="googleMapPane" class="MainMap"></div>
+            </div>
+            </div> 
+
+        </tal:main-macro>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="uwmarketing.googlemaps">
+
+  <!-- configure your content components here -->
+  
+  <!-- -*- extra stuff goes here -*- -->
+  <class class=".region.Region">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IRegion"
+        />
+  </class>
+  <class class=".location.Location">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.ILocation"
+        />
+  </class>
+  <class class=".googlemap.GoogleMap">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IGoogleMap"
+        />
+  </class>
+
+</configure>

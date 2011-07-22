@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tool">
+  <object name="googlemaps"
+          meta_type="Filesystem Directory View"
+          directory="uwmarketing.googlemaps:skins/googlemaps"/>
+  <skin-path name="*">
+    <layer name="googlemaps" insert-after="custom"/>
+  </skin-path>
+</object>
