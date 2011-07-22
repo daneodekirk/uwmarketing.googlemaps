@@ -20,6 +20,19 @@ GoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
 
+    atapi.StringField(
+        name='dropdownMessage',
+        default='Select a district',
+        widget=atapi.StringWidget(
+            label=_(u"Dropdown Message"),
+            description=_(u"Custom message for the dropdown navigation in the map's search toolbar."),
+            maxlength=30,
+            size=30,
+        ),
+        required=False,
+        searchable=False
+    ),
+
     atapi.FileField(
         'kmlFile',
         storage=atapi.AnnotationStorage(),

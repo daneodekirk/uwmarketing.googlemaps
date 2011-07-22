@@ -5,6 +5,10 @@
 <body>
 
     <metal:javascript fill-slot="javascript_head_slot">
+     <tal:css define="css view/generateInlineCSS">
+        <style type="text/css" media="screen" tal:content="css"></style>
+     </tal:css>
+
      <tal:script define="poly view/generatePolygons">
          <script type="text/javascript" tal:content="poly"> </script>
      </tal:script> 
@@ -19,11 +23,6 @@
                 <metal:field use-macro="python:here.widget('title', mode='view')" />
             </h1>
 
-            <p class="documentDescription" tal:condition="here/Description">
-                <metal:field use-macro="python:here.widget('description', mode='view')" />
-            </p>
-
-            
             <div class="searchBar"> 
                 <div class="portalRound">
                     <div class="portalBlockBG">
@@ -41,7 +40,7 @@
                                     <p>or</p> 
                                     <form id="choose-a-district" action="#">
                                         <select title="Choose a District">
-                                            <option id="select-option">Select a district</option>
+                                            <option id="select-option" tal:content="context/dropdownMessage"></option>
                                         <tal:districts repeat="district context/objectValues"> 
                                         <option tal:omit-tag="python:district.meta_type != 'Region'" tal:attributes="value district/absolute_url"><tal:block tal:condition="python: district.meta_type == 'Region'" replace="district/title"/></option>
                                         </tal:districts>

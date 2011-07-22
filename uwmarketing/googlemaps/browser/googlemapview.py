@@ -22,6 +22,9 @@ class IGoogleMapView(Interface):
     def generatePolygons(): 
         """ generate the polygons global javascript variable """ 
 
+    def generateInlineCSS(): 
+        """ generate the CSS that are dependent on the URL """ 
+
     enabled = Attribute("True if googlemap_view is enabled")
 
 
@@ -64,47 +67,17 @@ class GoogleMapView(BrowserView):
         return 'var polygons = {' + \
                     ''.join(["'%s':%s," % (object.id, object.polygon) for object in self.context.objectValues() if hasattr(object, 'polygon') and len(object.polygon) > 0 ])[:-1] \
                 + '};'
-         
-#    def longToLat(self, value):
-#        #import pdb; pdb.set_trace()
-#        neworder = [1,0]
-#        value = value.split(',')
-#        value = [value[i] for i in neworder]
-#        return value[0]+','+value[1]
-#
-#    def renderJavascriptObject(self, kmlfile):
-#        geostring = 'var polygons = {'
-#        kml_io = StringIO(kmlfile)
-#        try:
-#            dom = parse(kml_io)
-#        except AttributeError:
-#            return 
-#        placemarks = dom.getElementsByTagName("Placemark") 
-#        for index, placemark in enumerate(placemarks): 
-#            #if(index < 3):
-#            name = placemark.getElementsByTagName("name")[0].childNodes[0].nodeValue.encode()
-#            name = name.strip().lower().replace(' ','-')
-#            coordinate = placemark.getElementsByTagName("coordinates")
-#            #coordinates = dom.getElementsByTagName("coordinates")                        
-#        #for coordinate in coordinates:
-#            latlnglist = coordinate[0].childNodes[0].nodeValue.encode()
-#            latlngs = latlnglist.split()
-#            latlngs = map(lambda x: self.longToLat(x), latlngs)
-#            latlngs = map(lambda x: 'new google.maps.LatLng(%s),' % x, latlngs) 
-#            latlngs = ''.join(latlngs)
-#            latlngs = latlngs[:-1] #removes final comma
-#            #import pdb; pdb.set_trace()
-#            #latlngs = map(lambda value: value.encode(), latlngs) 
-#            #for latlng in latlngs:
-#            #import pdb; pdb.set_trace()
-#            #return '[%s],' % latlngs
-#            geostring += '\'' + name + '\'' + ': [%s],' % latlngs
-#        return geostring[:-1] + '};'
-#    
-#    def getPolygons(self):
-#        """ returns a list of polygons ready for javascript file """
-#        if(hasattr(self.context, 'getKmlFile')):
-#            kmlfile = self.context.getKmlFile();
-#            geostring = self.renderJavascriptObject(kmlfile)
-#            return geostring
 
+    def generateInlineCSS(self, *args, **kwargs):
+        """ generate the inline CSS for a googlemap view """ 
+        return """
+         .googleLoading.googleMapView #CustomGoogleMap { 
+            height:520px;
+            background: url("../image/map/stripeHorz.gif") repeat-x scroll 0 0 transparent;
+            padding: 20px;
+            position: relative;
+         } 
+         .googleLoading.googleMapView {
+              background: url("/edit/maploader.gif") no-repeat scroll 215px 115px transparent;
+         }
+        """.replace('\n', '').replace('  ','')
