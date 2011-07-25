@@ -25,10 +25,21 @@ function UWInfoWindow () {
     };
 
     UWInfoWindow.prototype.createDiv = function() {
+        var this_ = this;
         this.div = document.createElement('DIV');
         this.div.style.border = "none";
         this.div.style.borderWidth = "0px";
         this.div.style.position = "absolute";
+
+        this.closediv = document.createElement('DIV');
+        this.closediv.id = 'closeWindow';
+        this.closediv.className = 'closeButton';
+        this.closediv.onclick = function() { 
+            google.maps.event.trigger(this_.map, 'click');
+        };
+
+        this.div.appendChild(this.closediv);
+        
     };
 
     UWInfoWindow.prototype.close = function() {
@@ -61,6 +72,7 @@ function UWInfoWindow () {
     };
 
     UWInfoWindow.prototype.onAdd = function() {
+        this.disableEvents();
         this.content = this.newContent;
         var panes = this.getPanes();
         panes.floatPane.appendChild(this.div); 
@@ -84,6 +96,27 @@ function UWInfoWindow () {
         //remove the div/infowindow
         this.div.removeChild(this.content);
     };
+
+    UWInfoWindow.prototype.disableEvents = function() {
+      // We want to cancel all the events so they do not go to the map
+      var events = ['mousedown', 'mouseover', 'mouseout', 'mouseup',
+          'mousewheel', 'DOMMouseScroll', 'touchstart', 'touchend', 'touchmove',
+          'dblclick', 'contextmenu', 'click'];
+
+      var div = this.div;
+      this.listeners = [];
+      for (var i = 0, event; event = events[i]; i++) {
+        this.listeners.push(
+          google.maps.event.addDomListener(div, event, function(e) {
+                e.cancelBubble = true;
+                if (e.stopPropagation) {
+                  e.stopPropagation();
+                }
+          })
+        );
+      }
+   }
+
 
 //UW Map Colors
 var UWMapConfig = [
