@@ -3,6 +3,7 @@
 
 //jq(document).ready(function() { 
 jQuery.noConflict()(window).load(function($) { 
+    $ = jQuery;
 
 if($('#gmap').length > 0) {
 
@@ -20,6 +21,7 @@ if($('#gmap').length > 0) {
 
     if(google_map.mode === 'edit') {
 
+        var map = new PloneMap();
         var divMap = $("#gmap");
         var inputs = $('#latitude, #longitude');
 
