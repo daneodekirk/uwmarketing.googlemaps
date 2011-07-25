@@ -2,9 +2,16 @@
 // Passes JSLint
 
 //jq(document).ready(function() { 
-jQuery.noConflict()(window).load(function($) { 
+jQuery.noConflict()(window).load(function() { 
+    $ = jQuery.noConflict();
 
-if($('#gmap').length > 0) {
+    if($('#archetypes-fieldname-title').length > 0 ) {
+
+    $('<div id="gmap"/>')
+        .insertBefore('div#archetypes-fieldname-markerIcon')
+        .append('<div id="googleMapPane"/>');
+    $('#archetypes-fieldname-longitude, #archetypes-fieldname-latitude').hide();
+
 
     function distinguishZoomLevel (type) {
         if (type==='country') {
@@ -18,7 +25,6 @@ if($('#gmap').length > 0) {
         }
     }
 
-    if(google_map.mode === 'edit') {
 
         var divMap = $("#gmap");
         var inputs = $('#latitude, #longitude');
@@ -28,21 +34,17 @@ if($('#gmap').length > 0) {
         }
 
         divMap.siblings('input').css('display','none');
-        var locationDiv = 
-            $('<div id="coordinates" class="locationString discreet"/>')
-            .appendTo(divMap);
-        var searchbutton = 
-            $('<input type="button" value="search" class="searchButton"/>')
-            .prependTo(divMap);
-        var searchinput = $('<input id="query" type="text" size="50" />')
-            .prependTo(divMap);
+        var geolocateWidget = [
+                '<div id="geolocateWidget">',
+                '<div id="coordinates" class="locationString discreet">',
+                inputs[0].value + ', ' + inputs[1].value,
+                '</div>',
+                '<input id="query" type="text" size="50" value="' + inputs[0].value + ', ' + inputs[1].value + '" />',
+                '<input id="#queryinput" type="button" value="search" class="searchButton"/>',
+                '</div>'
+            ];
 
-        locationDiv.html(inputs[0].value + ', ' + inputs[1].value);
-        searchinput.attr('value', inputs[0].value + ', ' + inputs[1].value);
-
-
-
-
+        $(geolocateWidget.join('')).insertBefore(divMap);
         //var cachedIcons = this.icons;
         //var map = this.map;
         //var distinguishZoomLevel = this.distinguishZoomLevel;
@@ -53,25 +55,45 @@ if($('#gmap').length > 0) {
         var markerSelect = $('select#markerIcon');
         var markerColor = markerSelect[0].value;
         //var locationDiv = $('div#coordinates')[0];
-        //var searchinput = $('input[value=search]');
+        var searchinput = $('#queryinput');
         var queryinput = $('input#query');
+        var iconCache  = mapsConfig.google.markericons;
+        var currentMarker = iconCache[markerColor];
 
-        google_map.map.setOptions({center: center, zoom: 5});
+        var google_map = new google.maps.Map(divMap.get(0));
+
+        google_map.setOptions({
+            center: center,
+            zoom: 5,
+            mapTypeId: google.maps.MapTypeId.ROADMAP 
+        });
+       
         var editableMarker = new google.maps.Marker({
             draggable: true,
-            map: google_map.map,
+            map: google_map,
             position: center,
-            icon: google_map.iconCache[markerColor],
-            shadow: google_map.iconCache[markerColor].shadow
-        });
+            icon: currentMarker.url,
+            shadow: new google.maps.MarkerImage(currentMarker.shadow,
+                  new google.maps.Size(currentMarker.shadowSize[0], currentMarker.shadowSize[1]),
+                  new google.maps.Point(0,0),
+                  new google.maps.Point(currentMarker.shadowAnchor[0], currentMarker.shadowAnchor[1]))
 
-        //editableMarker.setMap(google_map.map);
+              });
+
+
+        if(typeof(UWMapConfig) !== 'undefined') {
+            var branded_map = new google.maps.StyledMapType(UWMapConfig, {name: "Branded Map"});
+            google_map.mapTypes.set("Branded Map", branded_map);
+            google_map.setMapTypeId("Branded Map");
+        }
+
+        //editableMarker.setMap(google_map);
 
         geocode = function(){ 
             geocoder.geocode({'address':queryinput[0].value}, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) { 
                     var point = results[0].geometry.location;
-                    google_map.map.setOptions({
+                    google_map.setOptions({
                         'center':point,
                         'zoom': distinguishZoomLevel(results[0].types[0])
                     });
@@ -113,8 +135,8 @@ if($('#gmap').length > 0) {
         });
 
         markerSelect.bind('change', function (e) {
-            editableMarker.setIcon(google_map.iconCache[this.value]);
-            editableMarker.setShadow(google_map.iconCache[this.value].shadow);
+            editableMarker.setIcon(iconCache[this.value]);
+            //editableMarker.setShadow(iconCache[this.value].shadow);
         });
 
         google.maps.event.addListener(editableMarker, "dragend", function(e){
@@ -126,7 +148,7 @@ if($('#gmap').length > 0) {
             inputs[1].value = point.lng();
         }); 
 
-        google.maps.event.addListener(google_map.map, "click", function(e){
+        google.maps.event.addListener(google_map, "click", function(e){
             var point = e.latLng;
             editableMarker.setPosition(point);
             locationDiv.html(point.lat() + ', ' + point.lng());
@@ -134,8 +156,6 @@ if($('#gmap').length > 0) {
             inputs[0].value = point.lat();
             inputs[1].value = point.lng();
         }); 
-    }
 
 }
-
 });

@@ -12,56 +12,63 @@ var mapsConfig = {
         defaultmaptype: 'normal',
         maxzoomlevel: 13,
         initialzoomlevel: 12,
-        markericons: [{
-            'infoShadowAnchor': [18, 25],
-            'name': 'Red Marker',
-            'iconSize': [28, 37],
-            'iconAnchor': [13, 36],
-            'shadowSize': [29, 13],
-            'shadow': current_url+'/uwmarker-shadow.png',
-            'infoWindowAnchor': [14, 6],
-            'icon': current_url+'/uwmarker-red.png'
-        },
-        {
-            'infoShadowAnchor': [18, 25],
-            'name': 'Green Marker',
-            'iconSize': [28, 37],
-            'iconAnchor': [13, 36],
-            'shadowSize': [29, 13],
-            'shadow': current_url+'/uwmarker-shadow.png',
-            'infoWindowAnchor': [14, 6],
-            'icon': current_url+'/uwmarker-green.png'
-        },
-        {
-            'infoShadowAnchor': [18, 25],
-            'name': 'Blue Marker',
-            'iconSize': [28, 37],
-            'iconAnchor': [13, 36],
-            'shadowSize': [29, 13],
-            'shadow': current_url+'/uwmarker-shadow.png',
-            'infoWindowAnchor': [14, 6],
-            'icon': current_url+'/uwmarker-blue.png'
-        },
-        {
-            'infoShadowAnchor': [18, 25],
-            'name': 'Gold Marker',
-            'iconSize': [28, 37],
-            'iconAnchor': [13, 36],
-            'shadowSize': [29, 13],
-            'shadow': current_url+'/uwmarker-shadow.png',
-            'infoWindowAnchor': [14, 6],
-            'icon': current_url+'/uwmarker-gold.png'
-        },
-        {
-            'infoShadowAnchor': [18, 25],
-            'name': 'Purple Marker',
-            'iconSize': [28, 37],
-            'iconAnchor': [13, 36],
-            'shadowSize': [29, 13],
-            'shadow': current_url+'/uwmarker-shadow.png',
-            'infoWindowAnchor': [14, 6],
-            'icon': current_url+'/uwmarker-purple.png'
-        }]
+        markericons: {
+            'Red Marker': {
+                'infoShadowAnchor': [18, 25],
+                'name': 'Red Marker',
+                'iconSize': [28, 37],
+                'iconAnchor': [13, 36],
+                'shadowSize': [29, 13],
+                'shadow': current_url+'/uwmarker-shadow.png',
+                'shadowAnchor': [3, 15],
+                'infoWindowAnchor': [14, 6],
+                'url': current_url+'/uwmarker-red.png'
+            },
+            'Green Marker': {
+                'infoShadowAnchor': [18, 25],
+                'name': 'Green Marker',
+                'iconSize': [28, 37],
+                'iconAnchor': [13, 36],
+                'shadowSize': [29, 13],
+                'shadow': current_url+'/uwmarker-shadow.png',
+                'shadowAnchor': [3, 15],
+                'infoWindowAnchor': [14, 6],
+                'url': current_url+'/uwmarker-green.png'
+            },
+            'Blue Marker': {
+                'infoShadowAnchor': [18, 25],
+                'name': 'Blue Marker',
+                'iconSize': [28, 37],
+                'iconAnchor': [13, 36],
+                'shadowSize': [29, 13],
+                'shadow': current_url+'/uwmarker-shadow.png',
+                'shadowAnchor': [3, 15],
+                'infoWindowAnchor': [14, 6],
+                'url': current_url+'/uwmarker-blue.png'
+            },
+            'Gold Marker': {
+                'infoShadowAnchor': [18, 25],
+                'name': 'Gold Marker',
+                'iconSize': [28, 37],
+                'iconAnchor': [13, 36],
+                'shadowSize': [29, 13],
+                'shadow': current_url+'/uwmarker-shadow.png',
+                'shadowAnchor': [3, 15],
+                'infoWindowAnchor': [14, 6],
+                'url': current_url+'/uwmarker-gold.png'
+            },
+            'Purple Marker': {
+                'infoShadowAnchor': [18, 25],
+                'name': 'Purple Marker',
+                'iconSize': [28, 37],
+                'iconAnchor': [13, 36],
+                'shadowSize': [29, 13],
+                'shadow': current_url+'/uwmarker-shadow.png',
+                'shadowAnchor': [3, 15],
+                'infoWindowAnchor': [14, 6],
+                'url': current_url+'/uwmarker-purple.png'
+            }
+        }
     }
 };
 
