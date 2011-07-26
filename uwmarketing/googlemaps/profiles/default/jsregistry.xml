@@ -23,7 +23,7 @@
     expression="python:here.meta_type in ('Location',)" insert-after="gmaps-navigation.js" />
  <javascript cacheable="True" compression="full" cookable="True"
     enabled="True" id="Map.js" inline="False"
-    expression="python:here.meta_type in ('Location',)" insert-after="gmaps-navigation.js" />
+    expression="python:here.meta_type in ('Location',)" insert-after="PloneMap.js" />
  <javascript cacheable="True" compression="full" cookable="True"
     enabled="True" id="Marker.js" inline="False"
     expression="python:here.meta_type in ('Location',)" insert-after="Map.js" />

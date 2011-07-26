@@ -49,3 +49,17 @@ class LocationView(BrowserView):
         dummy = _(u'a dummy string')
 
         return {'dummy': dummy} 
+
+    def generateMarker(self, *args, **kwargs):
+        """
+            Generates a marker object as inline javascript
+        """
+
+        return "var PloneMapMarkers = " + \
+                        '[{' + \
+                            "'type'    : '%s' , " % self.context.getMarkerIcon() + \
+                            "'options' : { " + \
+                                                "'position' : new google.maps.LatLng( %s, %s )" % ( self.context.getLatitude(), self.context.getLongitude() ) + \
+                                        "}" +\
+                         "}]"
+                            

@@ -1,12 +1,12 @@
 PloneMap.Map = function( element, options ) {
 
-    this.map = new google.maps.Map( element , this.DEFAULTS);
+    var map = new google.maps.Map( element , this.DEFAULTS);
 
     map.setOptions( options );
 
-    this.supr.set('map', map);
-
     map.set('center', this.SEATTLE);
+
+    this.supr.set('map', map);
 
 };
 
@@ -21,7 +21,6 @@ PloneMap.Map.prototype = {
     
 };
 
-
 PloneMap.Map.prototype.Helper = { 
 
     normZoom_ : function ( type ) {
@@ -33,6 +32,7 @@ PloneMap.Map.prototype.Helper = {
                10; //default
 
     }
+
 };
 
 PloneMap.Map.prototype.supr = PloneMap.prototype;

@@ -1,52 +1,57 @@
-<tal:block define="_dummy python:request.response.setHeader('content-type','text/javascript;;charset=utf-8')" />
-<metal:block i18n:domain="uwmarketing.googlemaps">
+PloneMap.Marker = function( type , options ) {
 
-/**
- * A Marker with the established settings and event bindings.
- *
- * @param {google.maps.Map} map The map on which to attach the distance widget.
- *
- * @constructor
- */
+    this.setType( type || this.DEFAULTS.type );
+    
+    this.setOptions( options );
 
-PloneMap.Marker = function( type ) {
-    this.setType( type || this.DEFAULTS.type )
+    this.addToMap();
+
 };
+
 PloneMap.Marker.prototype = new google.maps.Marker();
 
-
 PloneMap.Marker.prototype.DEFAULTS = {
-    draggable: false,
-    type: 'Gold'
-    //icon: 
-}
-
-//var editableMarker = new google.maps.Marker({
-//            draggable: true,
-//            map: google_map,
-//            position: center,
-//            icon: currentMarker.url,
-//            shadow: new google.maps.MarkerImage(currentMarker.shadow,
-//                  new google.maps.Size(currentMarker.shadowSize[0], currentMarker.shadowSize[1]),
-//                  new google.maps.Point(0,0),
-//                  new google.maps.Point(currentMarker.shadowAnchor[0], currentMarker.shadowAnchor[1]))
-//
-//              });
-
-
-PloneMap.Marker.prototype.setType = function( color ) {
-    var marker = this.TYPES_[ color ];
-    this.setOptions({
-        icon: this.SITE_URL + marker.url,
-        shadow: new google.maps.MarkerImage( 
-              this.SITE_URL + marker.shadow,
-              new google.maps.Size(marker.shadowSize[0], marker.shadowSize[1]),
-              new google.maps.Point(0,0),
-              new google.maps.Point(marker.shadowAnchor[0], marker.shadowAnchor[1]))
-       });
+        draggable: false,
+        type: 'Gold'
 };
 
-PloneMap.Marker.prototype.SITE_URL = '<tal:block tal:replace="context/absolute_url"/>';
+PloneMap.Marker.prototype.setType = function( color ) {
+
+        var marker = this.TYPES_[ color ];
+
+        //var SITE_URL = this.supr.CURRENT_URL;
+
+       // this.setOptions({
+
+       //     map: this.supr.get( 'map' ),
+
+       //    // icon: this.supr.CURRENT_URL + marker.url,
+
+       //     //shadow: 
+       //             
+       //             
+       //             
+       //     });
+};
+
+PloneMap.Marker.prototype.addToMap = function ( ) {
+
+        this.setMap( this.supr.get('map') );
+
+};
+
+
+PloneMap.Marker.prototype.supr  = PloneMap.prototype;
+
+PloneMap.Marker.prototype.SHADOW_  = {
+
+   // var shadow = new google.maps.MarkerImage( this.supr.CURRENT_URL + '/uwmarker-shadow.png',
+   //        new google.maps.Size( 29 , 13 ),
+   //        new google.maps.Point( 0 , 0 ),
+   //        new google.maps.Point( 3 , 15 ));
+
+}
+
 PloneMap.Marker.prototype.TYPES_   = {
             'Red': {
                 'infoShadowAnchor': [18, 25],
@@ -105,4 +110,3 @@ PloneMap.Marker.prototype.TYPES_   = {
             }
 }
 
-</metal:block>

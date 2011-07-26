@@ -12,143 +12,27 @@ var PloneMap = PloneMap || {} ;
 
 PloneMap.prototype = new google.maps.MVCObject();
 
+PloneMap.prototype.SITE_URL = '<tal:block tal:replace="context/absolute_url"/>';
+
 PloneMap.prototype.CURRENT_URL = '<tal:block tal:replace="context/absolute_url"/>';
 
-PloneMap.Map = function( element, options ) {
+PloneMap.init = function ( ) {
 
-    this.map = new google.maps.Map( element , this.DEFAULTS);
+    var div = document.getElementById( 'gmap' );
 
-    map.setOptions( options );
-
-    this.supr.set('map', map);
-
-    map.set('center', this.SEATTLE);
-
-};
-
-PloneMap.Map.prototype = {
-
-    SEATTLE     : new google.maps.LatLng(47.595977,-122.33139),
-
-    DEFAULTS    : {
-                        zoom: 12,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP 
-    }
+    var map = new PloneMap.Map( document.getElementById( 'gmap' ) );
     
-};
 
+    for (var i = 0, l = PloneMapMarkers.length; i < PloneMapMarkers.length; i++) {
 
-PloneMap.Map.prototype.Helper = { 
+        var marker = PloneMapMarkers[ i ];
 
-    normZoom_ : function ( type ) {
+        var plonemarker = new PloneMap.Marker( marker.type , marker.options );
 
-        return type === 'country' ? 5  :
-               type === 'administrative_area_level_1' || type === 'administrative_area_level_2' || type === 'administrative_area_level_3' ? 6 :
-               type === 'locality' || type === 'postal_code' ? 13 : 
-               type === 'street_address' || type === 'point_of_interest' ? 16 : 
-               10; //default
-
-    }
-};
-
-PloneMap.Map.prototype.supr = PloneMap.prototype;
-
-
-
-
-/* MARKER HELPERS */
-
-PloneMap.prototype.markers_      = [];
-PloneMap.prototype.addMarker = function( settings ) {
-    var map    = this.get( 'map' );
-    var center = map.get( 'center' );
-
-    var marker = new PloneMap.Marker();
-
-    marker.set( 'title', 'untitled' );
-    marker.set( 'map', map );
-    marker.set( 'position', center );
-
-    marker.setOptions( settings );
-
-    this.markers_.push( marker );
-    return marker;
+    };
+    
 }
 
-PloneMap.prototype.getMarkers = function( index ) {
-    return this.markers_[ index ] || this.markers_;
-}
-
-
-/* Edit Widget */
-PloneMap.prototype.EditWidget = function () {
-
-    var this_   = this;
-    var div     = this.map.getDiv();
-    //var inputs  = this.inputs;
-
-    var inputs = jQuery('#latitude, #longitude');
-
-    var geolocateWidgetHTML = [
-            '<div id="geolocateWidget">',
-            '<div id="coordinates" class="locationString discreet">',
-            inputs.get(0).value + ', ' + inputs.get(0).value,
-            '</div>',
-            '<input id="query" type="text" size="50" value="' + inputs[0].value + ', ' + inputs[1].value + '" />',
-            '<input id="queryinput" type="button" value="search" class="searchButton"/>',
-            '</div>'
-    ].join('');
-
-    jQuery( geolocateWidgetHTML )
-        .insertAfter( div )
-        .find( '#queryinput' )
-        .click( function() {
-            this_.GeoLocate( document.getElementById('query').value ); 
-        });
-
-}
-
-/* GeoLocate */
-
-PloneMap.prototype.GeoLocate = function( value ) {
-
-        var this_      = this;
-        var geocoder   = new google.maps.Geocoder();
-
-        geocoder.geocode( {
-                'address': value 
-            },
-            function(results, status) {
-
-                if (status == google.maps.GeocoderStatus.OK) { 
-
-                    var point = results[0].geometry.location;
-
-                    this_.get('map').setOptions({
-                        'center': point,
-                        'zoom': this_.distinguishZoomLevel(results[0].types[0])
-                    });
-
-                    this_.getMarkers( 0 ).setPosition( point );
-
-                    document.getElementById('latitude').value  = point.lat();
-                    document.getElementById('longitude').value = point.lng();
-
-                    //locationDiv.html(point.lat() + ', ' + point.lng());
-                    
-                } else {
-                    alert("Geocoding failed due to the following reasons: " + status); 
-                }
-            });
-            // Prevent "You already submitted this form" message
-            $("input[type=submit]").each(function(index) {
-                    $(this).removeClass('submitting');
-            });
-            return false;
-
-}
-
-
-
+google.maps.event.addDomListener(window, 'load', PloneMap.init);
 
 </metal:block>

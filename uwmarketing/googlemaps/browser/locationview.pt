@@ -3,12 +3,17 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="uwmarketing.googlemaps">
 <body>
+
+    <metal:javascript fill-slot="javascript_head_slot">
+         <tal:script define="poly view/generateMarker">
+             <script type="text/javascript" tal:content="poly"> </script>
+         </tal:script> 
+    </metal:javascript>
+
     <div metal:fill-slot="main">
         <tal:main-macro metal:define-macro="main"
                         tal:define="testview view/test">
                         
-                        <metal:field tal:content="python: here.portal_type"/>
-
             <h1 class="documentFirstHeading">
                 <metal:field use-macro="python:here.widget('title', mode='view')" />
             </h1>
