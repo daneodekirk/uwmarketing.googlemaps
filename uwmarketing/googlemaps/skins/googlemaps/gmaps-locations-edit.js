@@ -12,7 +12,7 @@ jQuery.noConflict()(window).load(function( ) {
         .insertBefore('div#archetypes-fieldname-markerIcon')
         .append('<div id="googleMapPane"/>');
 
-        var map = new PloneMap( document.getElementById('gmap') );
+        var map = new PloneMap.Map( document.getElementById('gmap') );
         var marker = map.addMarker( {
             draggable: true    
         });
