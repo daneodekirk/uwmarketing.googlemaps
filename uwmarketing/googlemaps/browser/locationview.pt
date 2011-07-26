@@ -26,7 +26,7 @@
                 <span class="popup" tal:content="structure context/getPopup"/>
             </div> 
 
-            <div id="gmap" class="googleMapView">
+            <div id="gmap" class="googleLoading googleMapView">
             <div id="CustomGoogleMap">
                 <div class="mapTL"></div> <div class="mapTR"></div> <div class="mapBL"></div> <div class="mapBR"></div>
                 <div class="infoWindow" tal:attributes="id context/id" style="display:none">

@@ -6,6 +6,8 @@ PloneMap.Marker = function( type , options ) {
 
     this.addToMap();
 
+    this.bindEvents();
+
 };
 
 PloneMap.Marker.prototype = new google.maps.Marker();
@@ -19,41 +21,38 @@ PloneMap.Marker.prototype.setType = function( color ) {
 
         var marker = this.TYPES_[ color ];
 
-        //var SITE_URL = this.supr.CURRENT_URL;
+        this.setOptions({
 
-       // this.setOptions({
+            icon: this.supr.CURRENT_URL + marker.url,
 
-       //     map: this.supr.get( 'map' ),
-
-       //    // icon: this.supr.CURRENT_URL + marker.url,
-
-       //     //shadow: 
-       //             
-       //             
-       //             
-       //     });
+            shadow: new google.maps.MarkerImage( this.supr.CURRENT_URL + '/uwmarker-shadow.png',
+                                   new google.maps.Size( 29 , 13 ),
+                                   new google.maps.Point( 0 , 0 ),
+                                   new google.maps.Point( 3 , 15 ))
+            });
 };
 
 PloneMap.Marker.prototype.addToMap = function ( ) {
 
         this.setMap( this.supr.get('map') );
 
+        //this.supr.extendBounds( this.getBou
+
 };
 
+PloneMap.Marker.prototype.bindEvents = function ( ) {
+
+    new google.maps.event.addListener( this,  'click' , function() {
+        console.log(this.title);
+    });
+
+};
 
 PloneMap.Marker.prototype.supr  = PloneMap.prototype;
 
-PloneMap.Marker.prototype.SHADOW_  = {
-
-   // var shadow = new google.maps.MarkerImage( this.supr.CURRENT_URL + '/uwmarker-shadow.png',
-   //        new google.maps.Size( 29 , 13 ),
-   //        new google.maps.Point( 0 , 0 ),
-   //        new google.maps.Point( 3 , 15 ));
-
-}
 
 PloneMap.Marker.prototype.TYPES_   = {
-            'Red': {
+            'Red Marker': {
                 'infoShadowAnchor': [18, 25],
                 'name': 'Red Marker',
                 'iconSize': [28, 37],
@@ -64,7 +63,7 @@ PloneMap.Marker.prototype.TYPES_   = {
                 'infoWindowAnchor': [14, 6],
                 'url': '/uwmarker-red.png'
             },
-            'Green': {
+            'Green Marker': {
                 'infoShadowAnchor': [18, 25],
                 'name': 'Green Marker',
                 'iconSize': [28, 37],
@@ -75,7 +74,7 @@ PloneMap.Marker.prototype.TYPES_   = {
                 'infoWindowAnchor': [14, 6],
                 'url': '/uwmarker-green.png'
             },
-            'Blue': {
+            'Blue Marker': {
                 'infoShadowAnchor': [18, 25],
                 'name': 'Blue Marker',
                 'iconSize': [28, 37],
@@ -86,7 +85,7 @@ PloneMap.Marker.prototype.TYPES_   = {
                 'infoWindowAnchor': [14, 6],
                 'url': '/uwmarker-blue.png'
             },
-            'Gold': {
+            'Gold Marker': {
                 'infoShadowAnchor': [18, 25],
                 'name': 'Gold Marker',
                 'iconSize': [28, 37],
@@ -97,7 +96,7 @@ PloneMap.Marker.prototype.TYPES_   = {
                 'infoWindowAnchor': [14, 6],
                 'url': '/uwmarker-gold.png'
             },
-            'Purple': {
+            'Purple Marker': {
                 'infoShadowAnchor': [18, 25],
                 'name': 'Purple Marker',
                 'iconSize': [28, 37],

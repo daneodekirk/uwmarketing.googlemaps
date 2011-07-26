@@ -18,9 +18,9 @@ PloneMap.prototype.CURRENT_URL = '<tal:block tal:replace="context/absolute_url"/
 
 PloneMap.init = function ( ) {
 
-    var div = document.getElementById( 'gmap' );
+    document.getElementById( 'googleMapPane' ).style.height = 475 + 'px';
 
-    var map = new PloneMap.Map( document.getElementById( 'gmap' ) );
+    var map = new PloneMap.Map( document.getElementById( 'googleMapPane' ) );
     
 
     for (var i = 0, l = PloneMapMarkers.length; i < PloneMapMarkers.length; i++) {
