@@ -1,12 +1,5 @@
 <tal:block define="_dummy python:request.response.setHeader('content-type','text/javascript;;charset=utf-8')" />
 <metal:block i18n:domain="uwmarketing.googlemaps">
-/**
- * A Marker with the established settings and event bindings.
- *
- * @param {google.maps.Map} map The map on which to attach the distance widget.
- *
- * @constructor
- */
 
 var PloneMap = PloneMap || {} ;
 
@@ -27,7 +20,7 @@ PloneMap.init = function ( ) {
 
         var marker = PloneMapMarkers[ i ];
 
-        var plonemarker = new PloneMap.Marker( marker.type , marker.options );
+        new PloneMap.Marker( marker.type , marker.options );
 
     };
     
