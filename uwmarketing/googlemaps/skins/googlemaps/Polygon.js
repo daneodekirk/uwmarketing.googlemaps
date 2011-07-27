@@ -1,5 +1,7 @@
-PloneMap.Polygon = function( options ) {
+PloneMap.Polygon = function( title, options ) {
 
+    this.title = title;
+    
     this.setOptions( this.DEFAULTS.normal );
 
     this.setOptions( options );
@@ -9,6 +11,44 @@ PloneMap.Polygon = function( options ) {
     this.bindEvents();
 
 };
+
+PloneMap.Polygon.prototype = new google.maps.Polygon();
+PloneMap.Polygon.prototype.supr  = PloneMap.prototype;
+
+
+    
+PloneMap.Polygon.prototype.addToMap = function( ) {
+    
+    this.setMap( this.supr.get( 'map' ) );
+
+};
+
+PloneMap.Polygon.prototype.bindEvents = function( ) {
+
+    google.maps.event.addListener( this , 'mouseover' , function( ) {
+
+        this.setOptions( this.DEFAULTS.mouseover );    
+
+        //this.supr.set( 'activePolygon' , this );
+
+    });
+
+    google.maps.event.addListener( this , 'mouseout' , function( ) {
+
+        this.setOptions( this.DEFAULTS.normal );    
+
+        //var cached = this.supr.get( 'activePolygon' );
+
+        //cached.setOptions( this.DEFAULTS.normal );
+
+    });
+
+    google.maps.event.addListener( this , 'click' , function( ) {
+        
+        console.log( this.title );
+
+    });
+}
 
 PloneMap.Polygon.prototype.DEFAULTS = {
 
@@ -21,7 +61,7 @@ PloneMap.Polygon.prototype.DEFAULTS = {
 
                },
 
-    mousein  : {
+    mouseover: {
                     strokeColor: "#222",
                     strokeOpacity: 1,
                     strokeWeight: 4,
@@ -36,17 +76,5 @@ PloneMap.Polygon.prototype.DEFAULTS = {
                     fillColor: "#e0a300",
                     fillOpacity: 0.4 
                 }
-    
 
 }
-    
-PloneMap.Polygon.prototype.addToMap = function( ) {
-    
-    this.setMap( this.supr.get( 'map' ) );
-
-};
-
-PloneMap.Polygon.prototype = new google.maps.Polygon();
-
-PloneMap.Polygon.prototype.supr  = PloneMap.prototype;
-

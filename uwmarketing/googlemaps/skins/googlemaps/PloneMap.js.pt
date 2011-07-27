@@ -15,23 +15,30 @@ PloneMap.init = function ( ) {
 
     var map = new PloneMap.Map( document.getElementById( 'googleMapPane' ) );
     
+    var markers  = (typeof PloneMapMarkers  != 'undefined' ) ? PloneMapMarkers  : {};
 
-    for (var i = 0, l = PloneMapMarkers.length; i < l; i++) {
+    var polygons = (typeof PloneMapPolygons != 'undefined' ) ? PloneMapPolygons : {};
 
-        var marker = PloneMapMarkers[ i ];
-
-        new PloneMap.Marker( marker.type , marker.options );
-
-    };
-
-    for (var i = 0, l = polygons.length; i < l; i++) {
+    for (var i = 0, l = markers.length; i < l; i++) {
 
         var marker = PloneMapMarkers[ i ];
 
         new PloneMap.Marker( marker.type , marker.options );
 
     };
+
+        
+    for (var region in polygons ) {
+
+        var options = {
+                        paths  : polygons[ region ],
+                      };
+
+        new PloneMap.Polygon( region , options );
     
+         
+
+    };
 }
 
 google.maps.event.addDomListener(window, 'load', PloneMap.init);

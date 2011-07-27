@@ -5,9 +5,9 @@
 <body>
 
     <metal:javascript fill-slot="javascript_head_slot">
-     <tal:css define="css view/generateInlineCSS">
+     <!--tal:css define="css view/generateInlineCSS">
         <style type="text/css" media="screen" tal:content="css"></style>
-     </tal:css>
+     </tal:css-->
 
      <tal:script define="poly view/generatePolygons">
          <script type="text/javascript" tal:content="poly"> </script>

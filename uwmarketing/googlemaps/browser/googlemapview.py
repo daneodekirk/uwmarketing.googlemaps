@@ -64,8 +64,10 @@ class GoogleMapView(BrowserView):
 
     def generatePolygons(self, *args, **kwargs):
         """ generate the polygons global javascript variable """ 
-        return 'var polygons = {' + \
-                    ''.join(["'%s':%s," % (object.id, object.polygon) for object in self.context.objectValues() if hasattr(object, 'polygon') and len(object.polygon) > 0 ])[:-1] \
+        return 'var PloneMapPolygons = {' + \
+                    ''.join(["'%s':%s," % (object.id, object.polygon) 
+                                for object in self.context.objectValues() 
+                                    if hasattr(object, 'polygon') and len(object.polygon) > 0 ])[:-1] \
                 + '};'
 
     def generateInlineCSS(self, *args, **kwargs):
