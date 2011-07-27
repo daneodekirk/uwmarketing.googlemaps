@@ -1,6 +1,6 @@
 PloneMap.Map = function( element, options ) {
 
-    this.map = new google.maps.Map( element , this.DEFAULTS);
+    var map = new google.maps.Map( element , this.DEFAULTS);
 
     map.setOptions( options );
 

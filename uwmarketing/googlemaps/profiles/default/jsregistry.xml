@@ -3,28 +3,35 @@
  <javascript cacheable="False" compression="none" cookable="False"
     enabled="True" id="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false" inline="False"
     expression="python:here.meta_type in ('GoogleMap','Region','Location')" />
- <javascript cacheable="True" compression="full" cookable="True"
-    enabled="True" id="gmaps-config.js" inline="False"
-    expression="python:here.meta_type in ('GoogleMap','Location')" insert-after="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false" />
- <javascript cacheable="True" compression="full" cookable="True"
-    enabled="True" id="gmaps-uw-config.js" inline="False"
-    expression="python:here.meta_type in ('GoogleMap','Region','Location')" insert-after="gmaps-config.js" />
- <javascript cacheable="True" compression="full" cookable="True"
-    enabled="True" id="gmaps-kml.js" inline="False"
-    expression="python:here.meta_type in ('Region',)" insert-after="gmaps-locations.js" />
- <javascript cacheable="True" compression="full" cookable="True"
-    enabled="True" id="gmaps-polygons.js" inline="False"
-    expression="python:here.meta_type in ('GoogleMap',)" insert-after="gmaps-kml.js" />
- <javascript cacheable="True" compression="full" cookable="True"
-    enabled="True" id="gmaps-locations-edit.js" inline="False"
-    expression="python:here.meta_type in ('Location',)" insert-after="gmaps-navigation.js" />
+
  <javascript cacheable="True" compression="full" cookable="True"
     enabled="True" id="PloneMap.js" inline="False"
-    expression="python:here.meta_type in ('Location',)" insert-after="gmaps-navigation.js" />
+    expression="python:here.meta_type in ('GoogleMap','Location','Region')" insert-after="gmaps-navigation.js" />
  <javascript cacheable="True" compression="full" cookable="True"
     enabled="True" id="Map.js" inline="False"
-    expression="python:here.meta_type in ('Location',)" insert-after="PloneMap.js" />
+    expression="python:here.meta_type in ('GoogleMap','Location','Region')" insert-after="PloneMap.js" />
  <javascript cacheable="True" compression="full" cookable="True"
     enabled="True" id="Marker.js" inline="False"
-    expression="python:here.meta_type in ('Location',)" insert-after="Map.js" />
+    expression="python:here.meta_type in ('GoogleMap','Location','Region')" insert-after="PloneMap.js" />
+ <javascript cacheable="True" compression="full" cookable="True"
+    enabled="True" id="Polygon.js" inline="False"
+    expression="python:here.meta_type in ('GoogleMap','Location','Region')" insert-after="PloneMap.js" />
+
+ <javascript cacheable="True" compression="full" cookable="True"
+    remove="True" enabled="False" id="gmaps-config.js" inline="False"
+    expression="python:here.meta_type in ('GoogleMap','Location')" insert-after="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false" />
+ <javascript cacheable="True" compression="full" cookable="True"
+    remove="True" enabled="False" id="gmaps-uw-config.js" inline="False"
+    expression="python:here.meta_type in ('GoogleMap','Region','Location')" insert-after="gmaps-config.js" />
+ <javascript cacheable="True" compression="full" cookable="True"
+    remove="True" enabled="False" id="gmaps-kml.js" inline="False"
+    expression="python:here.meta_type in ('Region',)" insert-after="gmaps-locations.js" />
+  <javascript cacheable="True" compression="full" cookable="True"
+    remove="True" enabled="False" id="gmaps-locations-edit.js" inline="False"
+    expression="python:here.meta_type in ('Location',)" insert-after="gmaps-navigation.js" />
+
+ <javascript cacheable="True" compression="full" cookable="True"
+    remove="True" enabled="False" id="gmaps-polygons.js" inline="False"
+    expression="python:here.meta_type in ('GoogleMap',)" insert-after="gmaps-kml.js" />
+
 </object>

@@ -1,30 +1,52 @@
-/**
- * A Marker with the established settings and event bindings.
- *
- * @param {google.maps.Map} map The map on which to attach the distance widget.
- *
- * @constructor
- */
-function PloneMap(settings) {
-  var options = $.extend({}, $.this.OPTIONS, settings);
+PloneMap.Polygon = function( options ) {
 
-  this.set('map', map);
-  this.set('position', map.getCenter());
+    this.setOptions( this.DEFAULTS.normal );
 
-  var marker = new google.maps.Marker();
+    this.setOptions( options );
 
-  // Bind the marker map property to the DistanceWidget map property
-  marker.bindTo('map', this);
+    this.addToMap();
+
+    this.bindEvents();
+
+};
+
+PloneMap.Polygon.prototype.DEFAULTS = {
+
+    normal   : { 
+                    strokeColor: "#333",
+                    strokeOpacity: 1,
+                    strokeWeight: 2,
+                    fillColor: "#d7a900",
+                    fillOpacity: 0.4
+
+               },
+
+    mousein  : {
+                    strokeColor: "#222",
+                    strokeOpacity: 1,
+                    strokeWeight: 4,
+                    fillColor: "#fff",
+                    fillOpacity: 0.6 
+               },
+
+    mouseout  : {
+                    strokeColor: "#000",
+                    strokeOpacity: 0.4,
+                    strokeWeight: 2,
+                    fillColor: "#e0a300",
+                    fillOpacity: 0.4 
+                }
+    
+
 }
+    
+PloneMap.Polygon.prototype.addToMap = function( ) {
+    
+    this.setMap( this.supr.get( 'map' ) );
 
-PloneMap.prototype = new google.maps.Map();
+};
 
-PloneMap.SETTINGS = {
-    map    : document.getElementById('gmap'),
-    center : 
-}
+PloneMap.Polygon.prototype = new google.maps.Polygon();
 
-PloneMap.prototype.OPTIONS = {
-        draggable: true,
-        title: 'Move me!'
-}
+PloneMap.Polygon.prototype.supr  = PloneMap.prototype;
+

@@ -16,7 +16,15 @@ PloneMap.init = function ( ) {
     var map = new PloneMap.Map( document.getElementById( 'googleMapPane' ) );
     
 
-    for (var i = 0, l = PloneMapMarkers.length; i < PloneMapMarkers.length; i++) {
+    for (var i = 0, l = PloneMapMarkers.length; i < l; i++) {
+
+        var marker = PloneMapMarkers[ i ];
+
+        new PloneMap.Marker( marker.type , marker.options );
+
+    };
+
+    for (var i = 0, l = polygons.length; i < l; i++) {
 
         var marker = PloneMapMarkers[ i ];
 
