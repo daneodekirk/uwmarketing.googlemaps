@@ -8,6 +8,8 @@ PloneMap.Map = function( element, options ) {
 
     map.set('center', this.SEATTLE);
 
+    this.bindEvents();
+
 };
 
 PloneMap.Map.prototype = {
@@ -33,6 +35,18 @@ PloneMap.Map.prototype.Helper = {
                10; //default
 
     }
+};
+
+PloneMap.Map.prototype.bindEvents = function( ) {
+    var supr_ = this.supr;
+    var map_  = this.supr.get( 'map' );
+
+    google.maps.event.addListener( map_ ,  'click' , function() {
+
+        supr_.get( 'infowindow' ).setMap( null );
+
+    });
+
 };
 
 PloneMap.Map.prototype.supr = PloneMap.prototype;

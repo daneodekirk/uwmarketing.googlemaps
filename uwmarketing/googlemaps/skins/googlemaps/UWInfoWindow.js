@@ -6,13 +6,8 @@ PloneMap.UWInfoWindow = function() {
 
     this.imageAnchor = {x: -242, y: -333}; 
 
-    if( this.div.id !== undefined ) {
-
-        this.div.id = 'google-info-window';
-
-    }
-
     this.bindWithMap();
+
 
 };
 
@@ -30,6 +25,7 @@ PloneMap.UWInfoWindow.prototype.open = function( latlng ) {
 PloneMap.UWInfoWindow.prototype.createDiv = function() {
 
     this.div = document.createElement('DIV');
+    this.div.id = 'google-info-window';
     this.div.style.border = "none";
     this.div.style.borderWidth = "0px";
     this.div.style.position = "absolute";
@@ -43,45 +39,40 @@ PloneMap.UWInfoWindow.prototype.createDiv = function() {
     //};
 
     this.div.appendChild(this.closediv);
+
+    this.disableEvents();
     
 };
 
-PloneMap.UWInfoWindow.prototype.close = function() {
-    if(this.div.parentNode) {
-        this.div.parentNode.removeChild(this.div);
-    }
-};
+PloneMap.UWInfoWindow.prototype.setContent = function( content ) {
 
-PloneMap.UWInfoWindow.prototype.setContent = function(content) {
-
-    if( !this.div ) {
-
-        this.createDiv();
-
-    }
-
-    this.content = content;
+    this.content = content.cloneNode( true );
 
 };
 
 PloneMap.UWInfoWindow.prototype.focus = function() {
 
-    var map = this.supr.get( 'map' );
+    var map             = this.supr.get( 'map' );
 
-    var projection = this.getProjection();
+    var projection      = this.getProjection();
 
-    var point = projection.fromLatLngToDivPixel( this.latlng );
+    var conversion      = projection.fromLatLngToDivPixel( this.latlng );
 
-    var gPoint = new google.maps.Point( point.x, point.y-190 );  
+    var point           = new google.maps.Point( conversion.x, conversion.y-190 );  
 
-    var mapCenterLatLng = projection.fromDivPixelToLatLng( gPoint );
+    var mapCenterLatLng = projection.fromDivPixelToLatLng( point );
 
-    map.setCenter(mapCenterLatLng);
+    map.setCenter( mapCenterLatLng );
+
 };
 
 PloneMap.UWInfoWindow.prototype.onAdd = function() {
 
-    this.disableEvents();
+    if ( !this.div ) {
+
+        this.createDiv();
+
+    }
 
     var panes = this.getPanes();
 
@@ -110,8 +101,16 @@ PloneMap.UWInfoWindow.prototype.draw = function() {
 };
 
 PloneMap.UWInfoWindow.prototype.onRemove = function() {
-    //remove the div/infowindow
-    this.div.removeChild(this.content);
+
+    while ( this.div.childNodes[0]  ) {
+        this.div.removeChild( this.div.childNodes[0] );
+    }
+
+    this.div.parentNode.removeChild( this.div );
+
+    this.div = null;
+    
+
 };
 
 PloneMap.UWInfoWindow.prototype.disableEvents = function() {

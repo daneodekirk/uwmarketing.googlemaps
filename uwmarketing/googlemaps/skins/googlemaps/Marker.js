@@ -42,7 +42,7 @@ PloneMap.Marker.prototype.addToMap = function ( ) {
 
 PloneMap.Marker.prototype.bindEvents = function ( ) {
 
-    new google.maps.event.addListener( this,  'click' , function() {
+    google.maps.event.addListener( this,  'click' , function() {
         console.log(this.title);
     });
 
