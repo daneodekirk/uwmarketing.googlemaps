@@ -1,6 +1,6 @@
 PloneMap.Polygon = function( title, options ) {
 
-    this.title = title;
+    this.title_ = title;
     
     this.setOptions( this.DEFAULTS.normal );
 
@@ -43,9 +43,14 @@ PloneMap.Polygon.prototype.bindEvents = function( ) {
 
     });
 
-    google.maps.event.addListener( this , 'click' , function( ) {
+    google.maps.event.addListener( this , 'click' , function( event ) {
         
-        console.log( this.title );
+        var infowindow = this.supr.get( 'infowindow' );
+
+        var div = document.getElementById( this.title_ );
+
+        infowindow.setContent( div );
+        infowindow.open( event.latLng );
 
     });
 }

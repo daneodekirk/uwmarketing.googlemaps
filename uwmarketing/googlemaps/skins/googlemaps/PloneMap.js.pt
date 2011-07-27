@@ -13,11 +13,13 @@ PloneMap.init = function ( ) {
 
     document.getElementById( 'googleMapPane' ).style.height = 475 + 'px';
 
-    var map = new PloneMap.Map( document.getElementById( 'googleMapPane' ) );
-    
-    var markers  = (typeof PloneMapMarkers  != 'undefined' ) ? PloneMapMarkers  : {};
+    var map         = new PloneMap.Map( document.getElementById( 'googleMapPane' ) );
 
-    var polygons = (typeof PloneMapPolygons != 'undefined' ) ? PloneMapPolygons : {};
+    var info_window = new PloneMap.UWInfoWindow();
+
+    var markers     = (typeof PloneMapMarkers  != 'undefined' ) ? PloneMapMarkers  : {};
+
+    var polygons    = (typeof PloneMapPolygons != 'undefined' ) ? PloneMapPolygons : {};
 
     for (var i = 0, l = markers.length; i < l; i++) {
 
@@ -36,8 +38,6 @@ PloneMap.init = function ( ) {
 
         new PloneMap.Polygon( region , options );
     
-         
-
     };
 }
 
