@@ -50,6 +50,7 @@ PloneMap.Polygon.prototype.bindEvents = function( ) {
         var div = document.getElementById( this.title_ );
 
         infowindow.setContent( div );
+        
         infowindow.open( event.latLng );
 
     });

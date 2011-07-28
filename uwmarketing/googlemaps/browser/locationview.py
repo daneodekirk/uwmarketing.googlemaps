@@ -59,7 +59,9 @@ class LocationView(BrowserView):
                         '[{' + \
                             "'type'    : '%s' , " % self.context.getMarkerIcon() + \
                             "'options' : { " + \
-                                                "'position' : new google.maps.LatLng( %s, %s )" % ( self.context.getLatitude(), self.context.getLongitude() ) + \
-                                        "}" +\
+                                                "'position' : new google.maps.LatLng( %s, %s )," % ( self.context.getLatitude(), self.context.getLongitude() ) + \
+                                                "'title' :  '%s'," % self.context.Title() + \
+                                                "'title_' :  '%s'" % self.context.getId() + \
+                                        "}" + \
                          "}]"
                             

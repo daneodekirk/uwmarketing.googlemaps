@@ -43,7 +43,15 @@ PloneMap.Marker.prototype.addToMap = function ( ) {
 PloneMap.Marker.prototype.bindEvents = function ( ) {
 
     google.maps.event.addListener( this,  'click' , function() {
-        console.log(this.title);
+        
+        var infowindow = this.supr.get( 'infowindow' );
+
+        var div = document.getElementById( this.title_ );
+
+        infowindow.setContent( div );
+
+        infowindow.open( this.get( 'position' ) );
+
     });
 
 };
