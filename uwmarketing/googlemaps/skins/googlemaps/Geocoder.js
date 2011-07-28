@@ -48,12 +48,12 @@ PloneMap.Geocoder.prototype.geocodeAddressToLatLng = function() {
                     infow.open( point );
 
                     break;
-                }
+                };
 
-            }
-        }
+            };
+        };
     });
-}
+};
 
 PloneMap.Geocoder.prototype.bindEvents = function() {
 
@@ -66,4 +66,4 @@ PloneMap.Geocoder.prototype.bindEvents = function() {
     });
     
     google.maps.event.addDomListener( this.input , 'click' , this.clearInput );
-}
+};
