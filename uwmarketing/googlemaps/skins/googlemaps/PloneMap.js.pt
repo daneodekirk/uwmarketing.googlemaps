@@ -9,9 +9,9 @@ PloneMap.prototype = new google.maps.MVCObject();
 
 PloneMap.prototype.CURRENT_URL = '<tal:block tal:replace="context/absolute_url"/>';
 
-PloneMap.prototype.polygons_   = '<tal:block tal:replace="context/absolute_url"/>';
+PloneMap.prototype.polygons_   = [ ];
 
-PloneMap.prototype.markers_    = '<tal:block tal:replace="context/absolute_url"/>';
+PloneMap.prototype.markers_    = [ ];
 
 PloneMap.init = function ( ) {
 
@@ -46,6 +46,7 @@ PloneMap.init = function ( ) {
     
     };
 
+    new PloneMap.Geocoder();
 
     for (var i = 0, l = kml.length; i < l; i++) {
 
