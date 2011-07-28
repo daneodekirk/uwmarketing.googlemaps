@@ -13,7 +13,30 @@ PloneMap.prototype.polygons_   = [ ];
 
 PloneMap.prototype.markers_    = [ ];
 
-PloneMap.init = function ( ) {
+PloneMap.initialize = function ( ) {
+
+    if ( !document.getElementById( 'googleMapPane' ) ) {
+
+        PloneMap.initEdit();
+
+    }
+
+    PloneMap.initView();
+
+         
+}
+
+PloneMap.initEdit = function() {
+
+        if ( document.getElementById( 'longitude' ) && document.getElementById( 'latitude' ) )  {
+        
+            new PloneMap.EditWidget();
+
+        }
+
+}
+
+PloneMap.initView = function() {
 
     document.getElementById( 'googleMapPane' ).style.height = 475 + 'px';
 
@@ -46,6 +69,7 @@ PloneMap.init = function ( ) {
     
     };
 
+    //[ TODO ] only trigger this when the search input exists
     new PloneMap.Geocoder();
 
     for (var i = 0, l = kml.length; i < l; i++) {
@@ -55,8 +79,9 @@ PloneMap.init = function ( ) {
         new PloneMap.KML( kml.innerHTML );
 
     };
+
 }
 
-google.maps.event.addDomListener(window, 'load', PloneMap.init);
+google.maps.event.addDomListener( window , 'load', PloneMap.initialize );
 
 </metal:block>
