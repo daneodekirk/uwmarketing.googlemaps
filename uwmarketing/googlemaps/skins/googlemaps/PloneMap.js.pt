@@ -21,7 +21,7 @@ PloneMap.init = function ( ) {
 
     var polygons    = (typeof PloneMapPolygons != 'undefined' ) ? PloneMapPolygons : {};
 
-    var kml         = ( document.getElementById( 'kmlUrl' ).length > 0 ) ? document.getElementById( 'kmlUrl' ) : [];
+    var kml         = ( document.getElementById( 'kmlUrl' ) ) ? [ document.getElementById( 'kmlUrl' ) ] : [];
 
     for (var i = 0, l = markers.length; i < l; i++) {
 
@@ -47,7 +47,7 @@ PloneMap.init = function ( ) {
 
         var kml = kml[ i ];
 
-        new PloneMap.KML();
+        new PloneMap.KML( kml.innerHTML );
 
     };
 }

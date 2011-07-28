@@ -1,10 +1,26 @@
-PloneMap.KML = function( ) {
+PloneMap.KML = function( url ) {
 
-    this.setOptions( this.DEFAULTS.normal );
+    url = this.isLocalHost( url );
 
-    this.setOptions( options );
+    var layer = new google.maps.KmlLayer( url , this.DEFAULTS );
+
+    layer.setMap( this.supr.get( 'map' ) ); 
+
+    
+};
+
+PloneMap.KML.prototype.isLocalHost = function( url ) {
+    
+    return ( url.indexOf( 'localhost:' ) != -1 ) ?
+                'http://gmaps-samples.googlecode.com/svn/trunk/ggeoxml/cta.kml' : url;
+
 
 };
 
-PloneMap.KML.prototype = new google.maps.KmlLayer();
+PloneMap.KML.prototype.DEFAULTS = {
+
+        suppressInfoWindows: true
+
+};
+
 PloneMap.KML.prototype.supr  = PloneMap.prototype;
