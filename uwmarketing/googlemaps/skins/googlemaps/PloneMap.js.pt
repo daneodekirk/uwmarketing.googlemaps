@@ -5,9 +5,13 @@ var PloneMap = PloneMap || {} ;
 
 PloneMap.prototype = new google.maps.MVCObject();
 
-PloneMap.prototype.SITE_URL = '<tal:block tal:replace="context/absolute_url"/>';
+//PloneMap.prototype.SITE_URL = '<tal:block tal:replace="context/absolute_url"/>';
 
 PloneMap.prototype.CURRENT_URL = '<tal:block tal:replace="context/absolute_url"/>';
+
+PloneMap.prototype.polygons_   = '<tal:block tal:replace="context/absolute_url"/>';
+
+PloneMap.prototype.markers_    = '<tal:block tal:replace="context/absolute_url"/>';
 
 PloneMap.init = function ( ) {
 

@@ -25,6 +25,10 @@
     enabled="True" id="UWInfoWindow.js" inline="False"
     expression="python:here.meta_type in ('GoogleMap','Location','Region')"  />
 
+ <javascript cacheable="True" compression="full" cookable="True"
+    enabled="True" id="Geocoder.js" inline="False"
+    expression="python:here.meta_type in ('GoogleMap','Location','Region')"  />
+
 
  <!-- Remove the old javascript -->
  <javascript cacheable="True" compression="full" cookable="True"
