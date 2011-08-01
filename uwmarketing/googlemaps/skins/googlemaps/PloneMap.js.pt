@@ -11,6 +11,8 @@ PloneMap.prototype.polygons_   = [ ];
 
 PloneMap.prototype.markers_    = [ ];
 
+PloneMap.edit_mode  = { 'enabled' : false };
+
 PloneMap.initialize = function ( ) {
 
     if ( !document.getElementById( 'googleMapPane' ) ) {
@@ -21,7 +23,7 @@ PloneMap.initialize = function ( ) {
 
     PloneMap.initView();
 
-         
+
 }
 
 PloneMap.initEdit = function() {
@@ -41,6 +43,17 @@ PloneMap.initView = function() {
     var map         = new PloneMap.Map( document.getElementById( 'googleMapPane' ) );
 
     var info_window = new PloneMap.UWInfoWindow();
+
+    if ( this.edit_mode.enabled ) { 
+
+        //this is a little awkward
+        this.edit_mode.marker.setMap( map.supr.get( 'map' ) );
+
+        map.supr.get( 'map' ).setCenter( this.edit_mode.marker.getPosition() );
+        
+        return;
+
+    }
 
     if ( typeof PloneMapMarkers  != 'undefined' ) {
 
