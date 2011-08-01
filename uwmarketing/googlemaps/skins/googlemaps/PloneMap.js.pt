@@ -5,8 +5,6 @@ var PloneMap = PloneMap || {} ;
 
 PloneMap.prototype = new google.maps.MVCObject();
 
-//PloneMap.prototype.SITE_URL = '<tal:block tal:replace="context/absolute_url"/>';
-
 PloneMap.prototype.CURRENT_URL = '<tal:block tal:replace="context/absolute_url"/>';
 
 PloneMap.prototype.polygons_   = [ ];
@@ -44,11 +42,29 @@ PloneMap.initView = function() {
 
     var info_window = new PloneMap.UWInfoWindow();
 
-    var markers     = (typeof PloneMapMarkers  != 'undefined' ) ? PloneMapMarkers  : {};
+    if ( typeof PloneMapMarkers  != 'undefined' ) {
 
-    var polygons    = (typeof PloneMapPolygons != 'undefined' ) ? PloneMapPolygons : {};
+        PloneMap.placeMarkers();
 
-    var kml         = ( document.getElementById( 'kmlUrl' ) ) ? [ document.getElementById( 'kmlUrl' ) ] : [];
+    }
+
+    if ( typeof PloneMapPolygons != 'undefined' ) {
+
+        PloneMap.placeRegions();
+
+    }
+
+    if( document.getElementById( 'kmlUrl' ) ) {
+
+        PloneMap.placeKML();
+
+    }
+
+}
+
+PloneMap.placeMarkers = function() {
+
+    var markers = PloneMapMarkers;
 
     for (var i = 0, l = markers.length; i < l; i++) {
 
@@ -58,7 +74,12 @@ PloneMap.initView = function() {
 
     };
 
-        
+}
+
+PloneMap.placeRegions = function() {
+
+    var polygons = PloneMapPolygons;
+
     for (var region in polygons ) {
 
         var options = {
@@ -69,16 +90,15 @@ PloneMap.initView = function() {
     
     };
 
-    //[ TODO ] only trigger this when the search input exists
     new PloneMap.Geocoder();
+}
 
-    for (var i = 0, l = kml.length; i < l; i++) {
 
-        var kml = kml[ i ];
+PloneMap.placeKML = function() {
 
-        new PloneMap.KML( kml.innerHTML );
+    var kml = document.getElementById( 'kmlUrl' );
 
-    };
+    new PloneMap.KML( kml.innerHTML );
 
 }
 
