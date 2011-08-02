@@ -64,11 +64,11 @@ class GoogleMapView(BrowserView):
 
     def generatePolygons(self, *args, **kwargs):
         """ generate the polygons global javascript variable """ 
-        return 'var PloneMapPolygons = {' + \
-                    ''.join(["'%s':%s," % (object.Title(), object.polygon) 
+        return 'var PloneMapPolygons = [' + \
+                ''.join(["{ 'id': '%s', 'path' : %s,'title':'%s'}," % (object.id, object.polygon, object.Title()) 
                                 for object in self.context.objectValues() 
                                     if hasattr(object, 'polygon') and len(object.polygon) > 0 ])[:-1] \
-                + '};'
+                + '];'
 
     def generateMarkers(self, *args, **kwargs):
         """ generate the markers global javascript variable """ 

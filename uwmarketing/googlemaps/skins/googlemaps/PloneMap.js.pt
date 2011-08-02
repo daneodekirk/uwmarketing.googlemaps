@@ -93,16 +93,27 @@ PloneMap.placeRegions = function() {
 
     var polygons = PloneMapPolygons;
 
-    for (var region in polygons ) {
+    for ( var i = 0, len = polygons.length; i < len; i++ ) {
+
+        var region = polygons[ i ];
 
         var options = {
-                        paths  : polygons[ region ],
+                        paths  : region.path ,
                       };
 
-        new PloneMap.Polygon( region , options );
-    
+        new PloneMap.Polygon( region, options );
     };
 
+//    for (var region in polygons ) {
+//
+//        var options = {
+//                        paths  : polygons[ region ],
+//                      };
+//
+//        new PloneMap.Polygon( region , options );
+//    
+//    };
+//
     new PloneMap.Geocoder();
 }
 

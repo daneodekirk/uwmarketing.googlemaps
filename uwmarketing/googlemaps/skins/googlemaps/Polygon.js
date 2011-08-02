@@ -1,6 +1,8 @@
-PloneMap.Polygon = function( title, options ) {
+PloneMap.Polygon = function( region , options ) {
 
-    this.title_ = title;
+    this.slug_ = region.id;
+
+    this.title_ = region.title;
 
     this.infoPane = document.getElementById( 'geolocateInfo' );
     
@@ -55,7 +57,7 @@ PloneMap.Polygon.prototype.bindEvents = function( ) {
         
         var infowindow = this.supr.get( 'infowindow' );
 
-        var div = document.getElementById( this.title_ );
+        var div = document.getElementById( this.slug_ );
 
         infowindow.setContent( div );
         
