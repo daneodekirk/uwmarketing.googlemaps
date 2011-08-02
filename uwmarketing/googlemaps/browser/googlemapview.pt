@@ -12,6 +12,9 @@
      <tal:script define="poly view/generatePolygons">
          <script type="text/javascript" tal:content="poly"> </script>
      </tal:script> 
+     <tal:script define="poly view/generateMarkers">
+         <script type="text/javascript" tal:content="poly"> </script>
+     </tal:script> 
     </metal:javascript>
 
     

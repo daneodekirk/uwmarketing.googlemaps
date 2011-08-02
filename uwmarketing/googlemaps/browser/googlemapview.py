@@ -70,6 +70,15 @@ class GoogleMapView(BrowserView):
                                     if hasattr(object, 'polygon') and len(object.polygon) > 0 ])[:-1] \
                 + '};'
 
+    def generateMarkers(self, *args, **kwargs):
+        """ generate the markers global javascript variable """ 
+        return 'var PloneMapMarkers = [{' + \
+                ''.join(["'type': '%s','options': { 'position': new google.maps.LatLng( %s, %s ), 'title' : '%s', 'title_' : '%s' }," 
+                                % (object.markerIcon, object.latitude, object.longitude, object.Title(), object.getId()) 
+                                for object in self.context.objectValues() 
+                                    if hasattr(object, 'latitude') and len(object.latitude) > 0 ])[:-1] \
+                + '}];'
+
     def generateInlineCSS(self, *args, **kwargs):
         """ generate the inline CSS for a googlemap view """ 
         return """
