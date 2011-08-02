@@ -64,7 +64,7 @@
 
             <div id="gmap" class="googleLoading googleMapView">
             <div id="CustomGoogleMap">
-                <div id="geolocateInfo"> </div>
+                <div id="geolocateInfo" style="display:none"> </div>
                 <div class="mapTL"></div> <div class="mapTR"></div> <div class="mapBL"></div> <div class="mapBR"></div>
             <!--span style="display:none" id="kmlUrl" tal:content="context/kmlFile/absolute_url | nothing">Main KML file with all Regions/Polygons</span-->
             <tal:mapcontent repeat="mapcontent context/objectValues"> 

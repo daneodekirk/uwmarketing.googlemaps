@@ -1,6 +1,8 @@
 PloneMap.Polygon = function( title, options ) {
 
     this.title_ = title;
+
+    this.infoPane = document.getElementById( 'geolocateInfo' );
     
     this.setOptions( this.DEFAULTS.normal );
 
@@ -14,8 +16,6 @@ PloneMap.Polygon = function( title, options ) {
 
 PloneMap.Polygon.prototype = new google.maps.Polygon();
 PloneMap.Polygon.prototype.supr  = PloneMap.prototype;
-
-
     
 PloneMap.Polygon.prototype.addToMap = function( ) {
     
@@ -38,11 +38,16 @@ PloneMap.Polygon.prototype.bindEvents = function( ) {
 
         this.setOptions( this.DEFAULTS.mouseover );    
 
+        this.showInfoPane();
+
     });
 
     google.maps.event.addListener( this , 'mouseout' , function( ) {
 
         this.setOptions( this.DEFAULTS.normal );    
+
+        this.hideInfoPane();
+        this.infoPane.style.display = 'none';
 
     });
 
@@ -70,6 +75,19 @@ PloneMap.Polygon.prototype.getBounds = function(latLng) {
         }
     }
     return bounds;
+};
+
+PloneMap.Polygon.prototype.showInfoPane = function( ) {
+
+    this.infoPane.innerHTML = this.title_;
+    this.infoPane.style.display = 'block';
+
+};
+
+PloneMap.Polygon.prototype.hideInfoPane = function( ) {
+
+    this.infoPane.innerHTML = '';
+    this.infoPane.style.display = 'none';
 };
 
 PloneMap.Polygon.prototype.contains = function(latLng) { 
