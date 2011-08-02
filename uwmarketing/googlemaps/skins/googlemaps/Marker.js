@@ -35,12 +35,16 @@ PloneMap.Marker.prototype.setType = function( color ) {
 PloneMap.Marker.prototype.addToMap = function ( ) {
         
     var map     = this.supr.get( 'map' );
-    var bounds  = this.supr.get( 'bounds' );
 
-    this.setMap( map );
+    if( typeof map != 'undefined' ) {
 
-    bounds.extend( this.getPosition() );
-    map.fitBounds( bounds );
+        var bounds  = this.supr.get( 'bounds' );
+
+        this.setMap( map );
+
+        bounds.extend( this.getPosition() );
+        map.fitBounds( bounds );
+    }
 
 };
 
