@@ -12,6 +12,10 @@ PloneMap.EditWidget = function () {
 
     this.placeMarker();
 
+    //this.insertSearch();
+
+    //this.createAutocomplete();
+
     this.supr.edit_mode = { 
 
         'enabled' : true,
@@ -44,11 +48,29 @@ PloneMap.EditWidget.prototype = {
         document.getElementById( 'archetypes-fieldname-longitude' ).style.display = 'none';
 
         var field = document.getElementById( 'archetypes-fieldname-markerIcon' );
-
         var parent_node = field.parentNode;
 
         parent_node.insertBefore( this.mapdiv , field );
 
+    },
+
+    insertSearch : function() {
+        
+        var div = document.createElement( 'DIV' );
+        div.innerHTML = '<label class="formQuestion"> Search or drag marker to a location: </label>';
+        div.style.paddingTop = '15px';
+
+        this.searchinput = document.createElement( 'INPUT' );
+        this.searchinput.id = 'googleautocomplete';
+        this.searchinput.style.width = '100%';
+        this.searchinput.style.paddingTop = '15px';
+
+        var field = document.getElementById( 'archetypes-fieldname-markerIcon' );
+        var parent_node = field.parentNode;
+
+        div.appendChild ( this.searchinput );
+        parent_node.insertBefore( div , field );
+        
     },
 
     placeMarker : function() {
@@ -107,9 +129,13 @@ PloneMap.EditWidget.prototype = {
     placeMarkerOnMap : function() {
         
         this.gmarker = new PloneMap.Marker( this.marker.type , this.marker.options );
+        
+    },
 
+    createAutocomplete : function() {
 
         
+    
     },
 
     bindEvents: function() {
