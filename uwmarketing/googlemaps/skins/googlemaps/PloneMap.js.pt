@@ -1,7 +1,7 @@
 <tal:block define="_dummy python:request.response.setHeader('content-type','text/javascript;;charset=utf-8')" />
 <metal:block i18n:domain="uwmarketing.googlemaps">
 
-var PloneMap = PloneMap || {} ;
+var PloneMap = PloneMap || {};
 
 PloneMap.prototype = new google.maps.MVCObject();
 
@@ -23,8 +23,7 @@ PloneMap.initialize = function ( ) {
 
     PloneMap.initView();
 
-
-}
+};
 
 PloneMap.initEdit = function() {
 
@@ -34,7 +33,7 @@ PloneMap.initEdit = function() {
 
         }
 
-}
+};
 
 PloneMap.initView = function() {
 
@@ -73,7 +72,7 @@ PloneMap.initView = function() {
 
     }
 
-}
+};
 
 PloneMap.placeMarkers = function() {
 
@@ -87,7 +86,7 @@ PloneMap.placeMarkers = function() {
 
     };
 
-}
+};
 
 PloneMap.placeRegions = function() {
 
@@ -104,18 +103,8 @@ PloneMap.placeRegions = function() {
         new PloneMap.Polygon( region, options );
     };
 
-//    for (var region in polygons ) {
-//
-//        var options = {
-//                        paths  : polygons[ region ],
-//                      };
-//
-//        new PloneMap.Polygon( region , options );
-//    
-//    };
-//
     new PloneMap.Geocoder();
-}
+};
 
 
 PloneMap.placeKML = function() {
@@ -124,7 +113,7 @@ PloneMap.placeKML = function() {
 
     new PloneMap.KML( kml.innerHTML );
 
-}
+};
 
 google.maps.event.addDomListener( window , 'load', PloneMap.initialize );
 

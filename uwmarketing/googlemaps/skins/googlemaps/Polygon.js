@@ -64,7 +64,7 @@ PloneMap.Polygon.prototype.bindEvents = function( ) {
         infowindow.open( event.latLng );
 
     });
-}
+};
 
 PloneMap.Polygon.prototype.getBounds = function(latLng) {
     var bounds = new google.maps.LatLngBounds();
@@ -152,4 +152,4 @@ PloneMap.Polygon.prototype.DEFAULTS = {
                     fillOpacity: 0.4 
                 }
 
-}
+};
