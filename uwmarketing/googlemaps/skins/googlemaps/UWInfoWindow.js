@@ -114,25 +114,35 @@ PloneMap.UWInfoWindow.prototype.onRemove = function() {
 };
 
 PloneMap.UWInfoWindow.prototype.disableEvents = function() {
-  // We want to cancel all the events so they do not go to the map
 
-  var events = ['mousedown', 'mouseover', 'mouseout', 'mouseup',
-                'mousewheel', 'DOMMouseScroll', 'touchstart', 'touchend', 
-                'touchmove', 'dblclick', 'contextmenu', 'click'];
+  // We want to cancel all the events so they do not go to the map
+  var events = [ 'mousedown', 'mouseover', 'mouseout', 'mouseup',
+                 'mousewheel', 'DOMMouseScroll', 'touchstart', 'touchend', 
+                 'touchmove', 'dblclick', 'contextmenu', 'click' ];
 
   var div = this.div;
-  this.listeners = [];
-  for (var i = 0, event; event = events[i]; i++) {
+  var closediv = this.closediv;
+  this.listeners = [ ];
+  for ( var i = 0, event; event = events[i]; i++ ) {
+
     this.listeners.push(
-      google.maps.event.addDomListener(div, event, function(e) {
+
+      google.maps.event.addDomListener( div, event, function( e ) {
+            if( e.type === 'click' && e.target == closediv ) {
+                return true;
+            };
+
             e.cancelBubble = true;
-            if (e.stopPropagation) {
+
+            if ( e.stopPropagation ) {
               e.stopPropagation();
             }
       })
+
     );
   }
-}
+
+};
 
 PloneMap.UWInfoWindow.prototype.bindWithMap = function() {
     
