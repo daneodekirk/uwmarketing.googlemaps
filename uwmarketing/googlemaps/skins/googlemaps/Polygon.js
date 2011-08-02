@@ -19,7 +19,14 @@ PloneMap.Polygon.prototype.supr  = PloneMap.prototype;
     
 PloneMap.Polygon.prototype.addToMap = function( ) {
     
-    this.setMap( this.supr.get( 'map' ) );
+    var map     = this.supr.get( 'map' );
+    var bounds  = this.supr.get( 'bounds' );
+
+    this.setMap( map );
+
+    bounds.union( this.getBounds() );
+
+    map.fitBounds( bounds );
 
     this.supr.polygons_.push( this );
 
@@ -31,17 +38,11 @@ PloneMap.Polygon.prototype.bindEvents = function( ) {
 
         this.setOptions( this.DEFAULTS.mouseover );    
 
-        //this.supr.set( 'activePolygon' , this );
-
     });
 
     google.maps.event.addListener( this , 'mouseout' , function( ) {
 
         this.setOptions( this.DEFAULTS.normal );    
-
-        //var cached = this.supr.get( 'activePolygon' );
-
-        //cached.setOptions( this.DEFAULTS.normal );
 
     });
 

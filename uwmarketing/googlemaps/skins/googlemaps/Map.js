@@ -1,10 +1,13 @@
 PloneMap.Map = function( element, options ) {
 
-    var map = new google.maps.Map( element , this.DEFAULTS);
+    var map     = new google.maps.Map( element , this.DEFAULTS);
+    var bounds  = new google.maps.LatLngBounds();
 
     map.setOptions( options );
 
     this.supr.set('map', map);
+
+    this.supr.set('bounds', bounds);
 
     map.set('center', this.SEATTLE);
 
