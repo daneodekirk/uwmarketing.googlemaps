@@ -5,6 +5,7 @@ PloneMap.EditWidget = function () {
     this.lat  = document.getElementById( 'latitude' ).value;
     this.lng  = document.getElementById( 'longitude' ).value;
     this.type = document.getElementById( 'markerIcon' ).options[ index ].text; 
+    this.form = document.getElementById( 'location-base-edit' );
 
     this.createMap();
 
@@ -12,9 +13,11 @@ PloneMap.EditWidget = function () {
 
     this.placeMarker();
 
-    //this.insertSearch();
+    this.insertSearch();
 
-    //this.createAutocomplete();
+    this.createAutocomplete();
+
+    this.bindEvents();
 
     this.supr.edit_mode = { 
 
@@ -86,7 +89,6 @@ PloneMap.EditWidget.prototype = {
 
         this.placeMarkerOnMap();
 
-        this.bindEvents();
 
     },
 
@@ -134,7 +136,7 @@ PloneMap.EditWidget.prototype = {
 
     createAutocomplete : function() {
 
-        
+        this.autocomplete = new google.maps.places.Autocomplete( this.searchinput );    
     
     },
 
@@ -151,11 +153,39 @@ PloneMap.EditWidget.prototype = {
 
         google.maps.event.addDomListener( document.getElementById( 'markerIcon') , 'change' , function( event ) {
 
-
             this_.gmarker.setType( this.value );
 
         });
+
+
+        google.maps.event.addListener( this.autocomplete, 'place_changed', function( event ) {
+
+
+            var place = this.getPlace();
+
+            this_.gmarker.setPosition( place.geometry.location );
+            this_.gmarker.get( 'map' ).setCenter( place.geometry.location );
+
+            return false;
+
+        });
+
+        google.maps.event.addDomListener( this.searchinput , 'focus' , function( event ) {
+            
+                this_.form.onsubmit = function() {
+                    return false;
+                };
+            
+
+        });
         
+        google.maps.event.addDomListener( this.searchinput , 'blur' , function( event ) {
+            
+                this_.form.onsubmit = function() {
+                    return true;
+                };
+
+        });
     },
 
     setLat : function ( lat ) {
