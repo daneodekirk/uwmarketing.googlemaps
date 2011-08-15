@@ -166,6 +166,9 @@ PloneMap.EditWidget.prototype = {
             this_.gmarker.setPosition( place.geometry.location );
             this_.gmarker.get( 'map' ).setCenter( place.geometry.location );
 
+            this_.setLat( place.geometry.location.lat() );
+            this_.setLng( place.geometry.location.lng() );
+
             return false;
 
         });
