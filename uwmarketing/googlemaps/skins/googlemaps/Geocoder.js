@@ -39,7 +39,7 @@ PloneMap.Geocoder.prototype.geocodeAddressToLatLng = function() {
                 if( polygon.contains( point ) ) {
 
                     var bounds = polygon.getBounds();
-                    var div = document.getElementById( polygon.title_ );
+                    var div = document.getElementById( polygon.slug_ );
 
                     map.fitBounds( bounds );
 

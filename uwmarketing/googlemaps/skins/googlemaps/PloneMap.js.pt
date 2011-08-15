@@ -104,6 +104,8 @@ PloneMap.placeRegions = function() {
     };
 
     new PloneMap.Geocoder();
+    
+    new PloneMap.DropDown();
 };
 
 
@@ -112,6 +114,8 @@ PloneMap.placeKML = function() {
     var kml = document.getElementById( 'kmlUrl' );
 
     new PloneMap.KML( kml.innerHTML );
+
+    new PloneMap.DropDown();
 
 };
 

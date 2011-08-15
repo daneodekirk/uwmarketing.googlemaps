@@ -30,6 +30,10 @@
     expression="python:here.meta_type in ('GoogleMap','Location','Region')"  />
 
  <javascript cacheable="True" compression="full" cookable="True"
+    enabled="True" id="Dropdown.js" inline="False"
+    expression="python:here.meta_type in ('GoogleMap','Location','Region')"  />
+
+ <javascript cacheable="True" compression="full" cookable="True"
     enabled="True" id="EditWidget.js" inline="False"
     expression="python:here.meta_type in ('GoogleMap','Location','Region')"  />
 

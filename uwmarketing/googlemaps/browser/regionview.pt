@@ -19,7 +19,7 @@
                 <span class="regioninfoWindowInternal" tal:condition="exists: context/getText" tal:omit-tag="python: len(context.getText()) < 1" tal:content="structure context/getPopup | nothing">Region Popup Info Here</span>
                     <h3> Choose A District: </h3>
                     <form id="choose-a-district" action="#">
-                        <select title="Choose a District">
+                        <select id="region-options" title="Choose a District">
                             <option id="select-option">Select a district</option>
                             <option tal:attributes="value python: context.getParentNode().absolute_url()">Main Map</option>
                         <tal:districts repeat="district python: context.getParentNode().objectValues()"> 
