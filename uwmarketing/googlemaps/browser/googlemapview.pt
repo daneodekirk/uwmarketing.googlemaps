@@ -43,7 +43,7 @@
                                     <p>or</p> 
                                     <form id="choose-a-district" action="#">
                                         <select id="region-options" title="Choose a District">
-                                            <option id="select-option" tal:content="context/dropdownMessage"></option>
+                                            <option id="select-option" tal:content="context/dropdownMessage | string:Select a Region"></option>
                                         <tal:districts repeat="district context/objectValues"> 
                                         <option tal:omit-tag="python:district.meta_type != 'Region'" tal:attributes="value district/absolute_url"><tal:block tal:condition="python: district.meta_type == 'Region'" replace="district/title"/></option>
                                         </tal:districts>
