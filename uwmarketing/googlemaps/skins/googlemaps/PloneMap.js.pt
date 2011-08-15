@@ -37,7 +37,7 @@ PloneMap.initEdit = function() {
 
 PloneMap.initView = function() {
 
-    document.getElementById( 'googleMapPane' ).style.height = 475 + 'px';
+    document.getElementById( 'googleMapPane' ).style.height = 480 + 'px';
 
     var map         = new PloneMap.Map( document.getElementById( 'googleMapPane' ) );
 
