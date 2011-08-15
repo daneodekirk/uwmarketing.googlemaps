@@ -4,7 +4,7 @@ PloneMap.KML = function( url ) {
 
     document.getElementById( 'googleMapPane' ).style.height = 240 + 'px';
 
-    google.maps.event.trigger( map, 'resize' )
+    google.maps.event.trigger( map, 'resize' );
 
     url = this.isLocalHost( url );
 
