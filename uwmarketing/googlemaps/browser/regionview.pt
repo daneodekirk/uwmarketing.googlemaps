@@ -20,7 +20,7 @@
                     <h3> Choose A District: </h3>
                     <form id="choose-a-district" action="#">
                         <select id="region-options" title="Choose a District">
-                            <option id="select-option">Select a district</option>
+                            <option id="select-option" tal:content="context/dropdownMessage | string:Select a Region"></option>
                             <option tal:attributes="value python: context.getParentNode().absolute_url()">Main Map</option>
                         <tal:districts repeat="district python: context.getParentNode().objectValues()"> 
                         <option tal:omit-tag="python:district.meta_type != 'Region'" tal:attributes="value district/absolute_url"><tal:block tal:condition="python: district.meta_type == 'Region'" replace="district/title"/></option>

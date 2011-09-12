@@ -26,6 +26,11 @@
                 <metal:field use-macro="python:here.widget('title', mode='view')" />
             </h1>
 
+            <p class="documentDescription" tal:condition="here/Description">
+               <metal:field use-macro="python:here.widget('description', mode='view')" />
+            </p>
+            
+
             <div class="searchBar"> 
                 <div class="portalRound">
                     <div class="portalBlockBG">

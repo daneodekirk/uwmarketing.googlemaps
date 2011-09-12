@@ -319,9 +319,13 @@ Then we select the type of item we want to add. In this case we select
 Now we fill the form and submit it.
 
     >>> browser.getControl(name='title').value = 'Google Map Sample'
+    >>> browser.getControl(name='dropdownMessage').value = 'Select a neighborhood'
     >>> browser.getControl('Save').click()
     >>> 'Changes saved' in browser.contents
     True
+
+Now check the html 
+    >>> 'Select a neighborhood' in browser.contents
 
 And we are done! We added a new 'Google Map' content item to the portal.
 
