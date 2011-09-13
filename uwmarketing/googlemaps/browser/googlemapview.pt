@@ -90,7 +90,7 @@
                 <div class="regionInfoWindow" style="display:none" tal:attributes="id mapcontent/id">
                     <h2><a href="" tal:attributes="href mapcontent/absolute_url" tal:content="mapcontent/title">Title</a></h2>
                     <span class="regionPopup" tal:condition="exists: mapcontent/getPopup" tal:omit-tag="python: len(mapcontent.getPopup()) < 1" tal:content="structure mapcontent/getPopup | nothing">Region Popup Info Here</span>
-                    <span class="wouldYouLikeToKnowMore"><a href="" tal:attributes="href mapcontent/absolute_url" tal:content="context/popupMessage | string:Learn more about this rict"></a></span>
+                    <span class="wouldYouLikeToKnowMore"><a href="" tal:attributes="href mapcontent/absolute_url" tal:content="context/popupMessage | string:Learn more about this district"></a></span>
                 </div> 
             </tal:region> 
 
