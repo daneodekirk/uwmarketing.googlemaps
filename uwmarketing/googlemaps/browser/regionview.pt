@@ -17,7 +17,6 @@
                 <div class="mapTL"></div> <div class="mapTR"></div> <div class="mapBL"></div> <div class="mapBR"></div>
                 <div id="regionFastFacts">
                 <span class="regioninfoWindowInternal" tal:condition="exists: context/getText" tal:omit-tag="python: len(context.getText()) < 1" tal:content="structure context/getPopup | nothing">Region Popup Info Here</span>
-                    <h3> Choose A District: </h3>
                     <form id="choose-a-district" action="#">
                         <select id="region-options" title="Choose a District">
                             <option id="select-option" tal:content="context/dropdownMessage | string:Select a Region"></option>
