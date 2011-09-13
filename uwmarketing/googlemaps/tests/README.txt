@@ -44,11 +44,10 @@ Save and click the new folder link
                 <dd>Changes saved.</dd>...
                 ...Google Folder...
 
-The description has been removed from the view and is simple there for
-reference and internal searching 
+The description has been added back into the main google map view
 
     >>> 'id="parent-fieldname-description"' in editor_browser.contents
-    False
+    True
 
 Change the view for this folder to the Maps view supplied by this product
 

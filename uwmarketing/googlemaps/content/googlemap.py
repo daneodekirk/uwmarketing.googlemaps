@@ -19,7 +19,6 @@ from uwmarketing.googlemaps.config import PROJECTNAME
 GoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
-
     atapi.StringField(
         name='dropdownMessage',
         default='Select a district',
@@ -27,6 +26,19 @@ GoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
             label=_(u"Dropdown Message"),
             description=_(u"Custom message for the dropdown navigation in the map's search toolbar."),
             maxlength=30,
+            size=30,
+        ),
+        required=False,
+        searchable=False
+    ),
+
+    atapi.StringField(
+        name='popupMessage',
+        default='Learn more about this district',
+        widget=atapi.StringWidget(
+            label=_(u"Popup Message"),
+            description=_(u"Customize the learn more sentence in the popup window"),
+            maxlength=140,
             size=30,
         ),
         required=False,
